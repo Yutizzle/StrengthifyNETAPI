@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Strengthify.Models;
 
 namespace Strengthify.Models
 {
+    [Index(nameof(WorkoutName), IsUnique = true)]
     public record Workout {
          public int Id {get; init;}
          public Guid ImageObjectId {get; init;}

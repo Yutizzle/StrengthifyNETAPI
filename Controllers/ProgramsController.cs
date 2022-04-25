@@ -79,7 +79,14 @@ namespace StrengthifyNETAPI.Controllers
         public async Task<ActionResult<Program>> PostProgram(Program program)
         {
             _context.Programs.Add(program);
-            await _context.SaveChangesAsync();
+            
+            try {
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException) 
+            {
+                return Conflict();
+            }
 
             return CreatedAtAction("GetProgram", new { id = program.Id }, program);
         }

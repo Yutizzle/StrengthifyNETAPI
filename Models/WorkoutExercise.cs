@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Strengthify.Models;
 
 namespace Strengthify.Models
 {
@@ -11,5 +14,6 @@ namespace Strengthify.Models
          public DateTimeOffset CreatedAt {get; init;}
          public Guid UpdatedBy {get; init;}
          public DateTimeOffset UpdatedAt{get; init;}
+         public ICollection<WorkoutExerciseDetail> WorkoutExerciseDetails {get; init;}
     }
 }
