@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Strengthify.Models;
 
 namespace Strengthify.Models
 {

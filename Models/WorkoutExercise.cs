@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Strengthify.Models;
 
 namespace Strengthify.Models
 {
+    [Index(nameof(WorkoutId), nameof(Exercise), IsUnique = true)]
     public record WorkoutExercise {
          public int Id {get; init;}
          public int WorkoutId {get; init;}
