@@ -1,7 +1,9 @@
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Strengthify.Models
 {
+    [Index(nameof(WorkoutExerciseId), nameof(Set), IsUnique = true)]
     public record WorkoutExerciseDetail {
          public int Id {get; init;}
          public int WorkoutExerciseId {get; init;}
