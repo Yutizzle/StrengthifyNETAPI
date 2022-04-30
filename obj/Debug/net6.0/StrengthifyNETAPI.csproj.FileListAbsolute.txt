@@ -266,3 +266,4 @@ C:\Users\Yuta\Projects\StrengthifyNETAPI\obj\Debug\net6.0\refint\StrengthifyNETA
 C:\Users\Yuta\Projects\StrengthifyNETAPI\obj\Debug\net6.0\StrengthifyNETAPI.pdb
 C:\Users\Yuta\Projects\StrengthifyNETAPI\obj\Debug\net6.0\StrengthifyNETAPI.genruntimeconfig.cache
 C:\Users\Yuta\Projects\StrengthifyNETAPI\obj\Debug\net6.0\ref\StrengthifyNETAPI.dll
+C:\Users\Yuta\Projects\StrengthifyNETAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

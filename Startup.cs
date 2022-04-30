@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Strengthify;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace StrengthifyNETAPI
 {
@@ -24,6 +27,7 @@ namespace StrengthifyNETAPI
         }
 
         public IConfiguration Configuration { get; }
+        private IWebHostEnvironment _env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,6 +39,7 @@ namespace StrengthifyNETAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StrengthifyNETAPI", Version = "v1" });
             });
 
+            // database connection service
             services.AddDbContext<StrengthifyContext>(options =>
                 options
                 .UseNpgsql(Configuration.GetConnectionString("StrengthifyContext"))
@@ -42,6 +47,24 @@ namespace StrengthifyNETAPI
                 .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
                 .EnableSensitiveDataLogging()
                 );
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateAudience = false,
+                        ValidateIssuer = false,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET")))
+                    };
+                });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
         }
@@ -62,6 +85,8 @@ namespace StrengthifyNETAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

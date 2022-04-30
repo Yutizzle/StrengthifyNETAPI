@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Strengthify;
 using Strengthify.Models;
 using StrengthifyNETAPI.Dto;
 
 namespace StrengthifyNETAPI.Controllers
-{
+{  
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -93,7 +94,7 @@ namespace StrengthifyNETAPI.Controllers
         public async Task<ActionResult<UserWriteDto>> PostUser(UserWriteDto user)
         {
             var newUser = new User { 
-                Uuid = Guid.NewGuid(),
+                Uuid = user.Uuid,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 DateOfBirth = user.DateOfBirth,
