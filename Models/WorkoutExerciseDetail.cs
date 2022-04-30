@@ -5,26 +5,29 @@ namespace Strengthify.Models
 {
     [Index(nameof(WorkoutExerciseId), nameof(Set), IsUnique = true)]
     public record WorkoutExerciseDetail {
-         public int Id {get; init;}
-         public int WorkoutExerciseId {get; init;}
-         public int Set {get; init;}
-         public int Reps {get; init;}
-         public int Weight {get; init;}
-         public int SetDuration {get; init;}
-         public int SetRestDuration {get; init;}
-         public int MaxReps {get; init;}
-         public int MaxWeight {get; init;}
-         public int MaxSetDuration {get; init;}
-         public int RepsIncrementFrequencyId {get; init;}
-         public int WeightIncrementFrequencyId {get; init;}
-         public int SetDurationIncrementFrequencyId {get; init;}
-         public int RepsIncrementAmount {get; init;}
-         public int WeightIncrementAmount {get; init;}
-         public int SetDurationIncrementAmount {get; init;}
-         public string Exercise {get; init;}
-         public Guid CreatedBy {get; init;}
-         public DateTimeOffset CreatedAt {get; init;}
-         public Guid UpdatedBy {get; init;}
-         public DateTimeOffset UpdatedAt{get; init;}
+         public int WorkoutExerciseDetailId {get; set;}
+         public int Set {get; set;}
+         public int Reps {get; set;}
+         public int Weight {get; set;}
+         public int SetDuration {get; set;}
+         public int SetRestDuration {get; set;}
+         public int MaxReps {get; set;}
+         public int MaxWeight {get; set;}
+         public int MaxSetDuration {get; set;}
+         public int RepsIncrementFrequencyId {get; set;}
+         public int WeightIncrementFrequencyId {get; set;}
+         public int SetDurationIncrementFrequencyId {get; set;}
+         public int RepsIncrementAmount {get; set;}
+         public int WeightIncrementAmount {get; set;}
+         public int SetDurationIncrementAmount {get; set;}
+         public string Exercise {get; set;}
+         public Guid CreatedBy {get; set;}
+         public DateTimeOffset CreatedAt {get; set;}
+         public Guid UpdatedBy {get; set;}
+         public DateTimeOffset UpdatedAt{get; set;}
+
+         
+         public int WorkoutExerciseId {get; set;}
+         public WorkoutExercise WorkoutExercise {get; set;}
     }
 }

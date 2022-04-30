@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Strengthify;
 using Strengthify.Models;
+using StrengthifyNETAPI.Dto;
 
 namespace StrengthifyNETAPI.Controllers
 {
@@ -47,7 +48,7 @@ namespace StrengthifyNETAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProgram(int id, Program program)
         {
-            if (id != program.Id)
+            if (id != program.ProgramId)
             {
                 return BadRequest();
             }
@@ -76,10 +77,56 @@ namespace StrengthifyNETAPI.Controllers
         // POST: api/Programs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Program>> PostProgram(Program program)
+        public async Task<ActionResult<ProgramWriteDto>> PostProgram(ProgramWriteDto newProgram)
         {
-            _context.Programs.Add(program);
+            // check if program already exists
+            var program = await _context.Programs.FindAsync(newProgram.ProgramName);
             
+            if(program != null)
+            {
+                return BadRequest();
+            }
+
+/*
+            // build Program model
+            var programModel = new Program {
+                ProgramName = newProgram.ProgramName,
+                TotalCycleDays = newProgram.Workouts.Length,
+                CreatedBy = newProgram.UserId,
+                UpdatedBy = newProgram.UserId
+            };
+            
+            _context.Programs.Add(programModel);
+            
+            // build Workout model
+            List<Workout> workouts = new List<Workout>();
+            foreach(var workout in newProgram.Workouts)
+            {
+                var newWorkout = new Workout{
+                    WorkoutName = workout.WorkoutName,
+                    CreatedBy = newProgram.UserId,
+                    UpdatedBy = newProgram.UserId
+                };
+                workouts.Add(newWorkout);
+                programModel.ProgramDetails.Add(new ProgramDetail{
+                    ProgramId = programModel.Id,
+                    WorkoutId = newWorkout.Id,
+
+                });
+            }
+            
+
+            List<WorkoutExercise> workoutExercises = new List<WorkoutExercise>();
+            foreach(var exercise in newProgram.Exercises)
+            {
+                workoutExercises.Add(new WorkoutExercise {
+                    WorkoutId = workouts.Find()
+                });
+            }
+
+            
+            //_context.Programs.Add(program);
+  */
             try {
                 await _context.SaveChangesAsync();
             }
@@ -88,7 +135,7 @@ namespace StrengthifyNETAPI.Controllers
                 return Conflict();
             }
 
-            return CreatedAtAction("GetProgram", new { id = program.Id }, program);
+            return CreatedAtAction("GetProgram", new { id = program.ProgramId }, program);
         }
 
         // DELETE: api/Programs/5
@@ -109,7 +156,7 @@ namespace StrengthifyNETAPI.Controllers
 
         private bool ProgramExists(int id)
         {
-            return _context.Programs.Any(e => e.Id == id);
+            return _context.Programs.Any(e => e.ProgramId == id);
         }
     }
 }

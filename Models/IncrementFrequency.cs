@@ -5,7 +5,7 @@ namespace Strengthify.Models
 {
     [Index(nameof(Frequency), IsUnique = true)]
     public record IncrementFrequency {
-         public int Id {get; init;}
+         public int IncrementFrequencyId {get; init;}
          public string Frequency {get; init;}
          public Guid CreatedBy {get; init;}
          public DateTimeOffset CreatedAt {get; init;}

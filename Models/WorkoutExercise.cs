@@ -6,14 +6,16 @@ namespace Strengthify.Models
 {
     [Index(nameof(WorkoutId), nameof(Exercise), IsUnique = true)]
     public record WorkoutExercise {
-         public int Id {get; init;}
-         public int WorkoutId {get; init;}
-         public int SequenceNum {get; init;}
-         public string Exercise {get; init;}
-         public Guid CreatedBy {get; init;}
-         public DateTimeOffset CreatedAt {get; init;}
-         public Guid UpdatedBy {get; init;}
-         public DateTimeOffset UpdatedAt{get; init;}
-         public ICollection<WorkoutExerciseDetail> WorkoutExerciseDetails {get; init;}
+         public int WorkoutExerciseId {get; set;}
+         public int SequenceNum {get; set;}
+         public string Exercise {get; set;}
+         public Guid CreatedBy {get; set;}
+         public DateTimeOffset CreatedAt {get; set;}
+         public Guid UpdatedBy {get; set;}
+         public DateTimeOffset UpdatedAt{get; set;}
+
+         public ICollection<WorkoutExerciseDetail> WorkoutExerciseDetails {get; set;}
+         public int WorkoutId {get; set;}
+         public Workout Workout {get; set;}
     }
 }
