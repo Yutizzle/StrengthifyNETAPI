@@ -93,11 +93,12 @@ namespace StrengthifyNETAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<UserWriteDto>> PostUser(UserWriteDto user)
         {
+            DateTime birthDate = DateTime.SpecifyKind(DateTime.Parse(user.DateOfBirth).Date, DateTimeKind.Utc);
             var newUser = new User { 
                 Uuid = user.Uuid,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                DateOfBirth = user.DateOfBirth,
+                DateOfBirth = birthDate,
                 Email = user.Email
             };
 

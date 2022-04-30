@@ -11,7 +11,7 @@ namespace Strengthify.Models
          public Guid Uuid {get; set;}
          public string FirstName {get; set;}
          public string LastName {get; set;}
-         public DateTimeOffset DateOfBirth {get; set;}
+         public DateTime DateOfBirth {get; set;}
          public string Email {get; set;}
          public int ProgramRun {get; set;}
          public int? ProgramId {get; set;}
