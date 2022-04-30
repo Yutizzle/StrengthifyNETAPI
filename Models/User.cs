@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Strengthify.Models
 {
     [Index(nameof(UserId), IsUnique = true)]
-    public record User {
+    public class User : BaseEntity {
          public int UserId {get; set;}
          public Guid Uuid {get; set;}
          public string FirstName {get; set;}
@@ -14,19 +14,9 @@ namespace Strengthify.Models
          public DateTimeOffset DateOfBirth {get; set;}
          public string Email {get; set;}
          public int ProgramRun {get; set;}
-         public int CreatedById {get; set;}
-         [ForeignKey("CreatedById")]
-         public User CreatedBy {get; set;}
-         public DateTimeOffset CreatedAt {get; set;}
-         public int UpdatedById {get; set;}
-         [ForeignKey("UpdatedById")]
-         public User UpdatedBy {get; set;}
-         public DateTimeOffset UpdatedAt {get; set;}
-
-         
-         public int ProgramId {get; set;}
+         public int? ProgramId {get; set;}
          public Program Program {get; set;}
-         public int WorkoutId {get; set;}
+         public int? WorkoutId {get; set;}
          public Workout Workout {get; set;}
          [InverseProperty("CreatedBy")]
          public ICollection<IncrementFrequency> IncrementFrequencyCreated {get; set;}

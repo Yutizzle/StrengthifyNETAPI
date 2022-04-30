@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Strengthify.Models
 {
     [Index(nameof(WorkoutExerciseId), nameof(Set), IsUnique = true)]
-    public record WorkoutExerciseDetail {
+    public class WorkoutExerciseDetail : BaseEntity {
          public int WorkoutExerciseDetailId {get; set;}
          public int Set {get; set;}
          public int Reps {get; set;}
@@ -22,13 +22,7 @@ namespace Strengthify.Models
          public IncrementFrequency RepsIncrementFrequency {get; set;}
          public IncrementFrequency WeightIncrementFrequency {get; set;}
          public IncrementFrequency SetDurationIncrementFrequency {get; set;}
-         public string Exercise {get; set;}
-         public User CreatedBy {get; set;}
-         public DateTimeOffset CreatedAt {get; set;}
-         public User UpdatedBy {get; set;}
-         public DateTimeOffset UpdatedAt{get; set;}
-
-         
+         public string Exercise {get; set;}   
          public int WorkoutExerciseId {get; set;}
          public WorkoutExercise WorkoutExercise {get; set;}
     }
