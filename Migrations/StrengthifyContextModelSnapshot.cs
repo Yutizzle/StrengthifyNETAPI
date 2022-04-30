@@ -35,9 +35,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_by_user_id");
 
                     b.Property<string>("Frequency")
                         .HasColumnType("text")
@@ -47,16 +47,22 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
+                    b.Property<int?>("UpdatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("updated_by_user_id");
 
                     b.HasKey("IncrementFrequencyId")
                         .HasName("pk_increment_frequencies");
 
+                    b.HasIndex("CreatedByUserId")
+                        .HasDatabaseName("ix_increment_frequencies_created_by_user_id");
+
                     b.HasIndex("Frequency")
                         .IsUnique()
                         .HasDatabaseName("ix_increment_frequencies_frequency");
+
+                    b.HasIndex("UpdatedByUserId")
+                        .HasDatabaseName("ix_increment_frequencies_updated_by_user_id");
 
                     b.ToTable("increment_frequencies", (string)null);
                 });
@@ -74,9 +80,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_by_user_id");
 
                     b.Property<string>("ProgramName")
                         .HasColumnType("text")
@@ -90,16 +96,22 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
+                    b.Property<int?>("UpdatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("updated_by_user_id");
 
                     b.HasKey("ProgramId")
                         .HasName("pk_programs");
 
+                    b.HasIndex("CreatedByUserId")
+                        .HasDatabaseName("ix_programs_created_by_user_id");
+
                     b.HasIndex("ProgramName")
                         .IsUnique()
                         .HasDatabaseName("ix_programs_program_name");
+
+                    b.HasIndex("UpdatedByUserId")
+                        .HasDatabaseName("ix_programs_updated_by_user_id");
 
                     b.ToTable("programs", (string)null);
                 });
@@ -117,9 +129,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_by_user_id");
 
                     b.Property<int>("CycleDayNum")
                         .HasColumnType("integer")
@@ -137,9 +149,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
+                    b.Property<int?>("UpdatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("updated_by_user_id");
 
                     b.Property<int>("WorkoutId")
                         .HasColumnType("integer")
@@ -147,6 +159,15 @@ namespace StrengthifyNETAPI.Migrations
 
                     b.HasKey("ProgramDetailId")
                         .HasName("pk_program_details");
+
+                    b.HasIndex("CreatedByUserId")
+                        .HasDatabaseName("ix_program_details_created_by_user_id");
+
+                    b.HasIndex("UpdatedByUserId")
+                        .HasDatabaseName("ix_program_details_updated_by_user_id");
+
+                    b.HasIndex("WorkoutId")
+                        .HasDatabaseName("ix_program_details_workout_id");
 
                     b.HasIndex("ProgramId", "WorkoutId")
                         .IsUnique()
@@ -168,9 +189,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_by_id");
 
                     b.Property<DateTimeOffset>("DateOfBirth")
                         .HasColumnType("timestamp with time zone")
@@ -200,9 +221,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
+                    b.Property<int>("UpdatedById")
+                        .HasColumnType("integer")
+                        .HasColumnName("updated_by_id");
 
                     b.Property<Guid>("Uuid")
                         .HasColumnType("uuid")
@@ -215,12 +236,18 @@ namespace StrengthifyNETAPI.Migrations
                     b.HasKey("UserId")
                         .HasName("pk_users");
 
+                    b.HasIndex("CreatedById")
+                        .HasDatabaseName("ix_users_created_by_id");
+
                     b.HasIndex("ProgramId")
                         .HasDatabaseName("ix_users_program_id");
 
-                    b.HasIndex("Uuid")
+                    b.HasIndex("UpdatedById")
+                        .HasDatabaseName("ix_users_updated_by_id");
+
+                    b.HasIndex("UserId")
                         .IsUnique()
-                        .HasDatabaseName("ix_users_uuid");
+                        .HasDatabaseName("ix_users_user_id");
 
                     b.HasIndex("WorkoutId")
                         .HasDatabaseName("ix_users_workout_id");
@@ -241,9 +268,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_by_user_id");
 
                     b.Property<Guid>("ImageObjectId")
                         .HasColumnType("uuid")
@@ -253,9 +280,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
+                    b.Property<int?>("UpdatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("updated_by_user_id");
 
                     b.Property<string>("WorkoutName")
                         .HasColumnType("text")
@@ -263,6 +290,12 @@ namespace StrengthifyNETAPI.Migrations
 
                     b.HasKey("WorkoutId")
                         .HasName("pk_workouts");
+
+                    b.HasIndex("CreatedByUserId")
+                        .HasDatabaseName("ix_workouts_created_by_user_id");
+
+                    b.HasIndex("UpdatedByUserId")
+                        .HasDatabaseName("ix_workouts_updated_by_user_id");
 
                     b.HasIndex("WorkoutName")
                         .IsUnique()
@@ -284,9 +317,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_by_user_id");
 
                     b.Property<string>("Exercise")
                         .HasColumnType("text")
@@ -300,9 +333,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
+                    b.Property<int?>("UpdatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("updated_by_user_id");
 
                     b.Property<int>("WorkoutId")
                         .HasColumnType("integer")
@@ -310,6 +343,12 @@ namespace StrengthifyNETAPI.Migrations
 
                     b.HasKey("WorkoutExerciseId")
                         .HasName("pk_workout_exercises");
+
+                    b.HasIndex("CreatedByUserId")
+                        .HasDatabaseName("ix_workout_exercises_created_by_user_id");
+
+                    b.HasIndex("UpdatedByUserId")
+                        .HasDatabaseName("ix_workout_exercises_updated_by_user_id");
 
                     b.HasIndex("WorkoutId", "Exercise")
                         .IsUnique()
@@ -331,9 +370,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("created_by_user_id");
 
                     b.Property<string>("Exercise")
                         .HasColumnType("text")
@@ -359,9 +398,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("reps_increment_amount");
 
-                    b.Property<int>("RepsIncrementFrequencyId")
+                    b.Property<int?>("RepsIncrementFrequencyIncrementFrequencyId")
                         .HasColumnType("integer")
-                        .HasColumnName("reps_increment_frequency_id");
+                        .HasColumnName("reps_increment_frequency_increment_frequency_id");
 
                     b.Property<int>("Set")
                         .HasColumnType("integer")
@@ -375,9 +414,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("set_duration_increment_amount");
 
-                    b.Property<int>("SetDurationIncrementFrequencyId")
+                    b.Property<int?>("SetDurationIncrementFrequencyIncrementFrequencyId")
                         .HasColumnType("integer")
-                        .HasColumnName("set_duration_increment_frequency_id");
+                        .HasColumnName("set_duration_increment_frequency_increment_frequency_id");
 
                     b.Property<int>("SetRestDuration")
                         .HasColumnType("integer")
@@ -387,9 +426,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
+                    b.Property<int?>("UpdatedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("updated_by_user_id");
 
                     b.Property<int>("Weight")
                         .HasColumnType("integer")
@@ -399,9 +438,9 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("weight_increment_amount");
 
-                    b.Property<int>("WeightIncrementFrequencyId")
+                    b.Property<int?>("WeightIncrementFrequencyIncrementFrequencyId")
                         .HasColumnType("integer")
-                        .HasColumnName("weight_increment_frequency_id");
+                        .HasColumnName("weight_increment_frequency_increment_frequency_id");
 
                     b.Property<int>("WorkoutExerciseId")
                         .HasColumnType("integer")
@@ -410,6 +449,21 @@ namespace StrengthifyNETAPI.Migrations
                     b.HasKey("WorkoutExerciseDetailId")
                         .HasName("pk_workout_exercise_details");
 
+                    b.HasIndex("CreatedByUserId")
+                        .HasDatabaseName("ix_workout_exercise_details_created_by_user_id");
+
+                    b.HasIndex("RepsIncrementFrequencyIncrementFrequencyId")
+                        .HasDatabaseName("ix_workout_exercise_details_reps_increment_frequency_increment");
+
+                    b.HasIndex("SetDurationIncrementFrequencyIncrementFrequencyId")
+                        .HasDatabaseName("ix_workout_exercise_details_set_duration_increment_frequency_i");
+
+                    b.HasIndex("UpdatedByUserId")
+                        .HasDatabaseName("ix_workout_exercise_details_updated_by_user_id");
+
+                    b.HasIndex("WeightIncrementFrequencyIncrementFrequencyId")
+                        .HasDatabaseName("ix_workout_exercise_details_weight_increment_frequency_increme");
+
                     b.HasIndex("WorkoutExerciseId", "Set")
                         .IsUnique()
                         .HasDatabaseName("ix_workout_exercise_details_workout_exercise_id_set");
@@ -417,8 +471,47 @@ namespace StrengthifyNETAPI.Migrations
                     b.ToTable("workout_exercise_details", (string)null);
                 });
 
+            modelBuilder.Entity("Strengthify.Models.IncrementFrequency", b =>
+                {
+                    b.HasOne("Strengthify.Models.User", "CreatedBy")
+                        .WithMany("IncrementFrequencyCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .HasConstraintName("fk_increment_frequencies_users_created_by_user_id");
+
+                    b.HasOne("Strengthify.Models.User", "UpdatedBy")
+                        .WithMany("IncrementFrequencyUpdated")
+                        .HasForeignKey("UpdatedByUserId")
+                        .HasConstraintName("fk_increment_frequencies_users_updated_by_user_id");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("UpdatedBy");
+                });
+
+            modelBuilder.Entity("Strengthify.Models.Program", b =>
+                {
+                    b.HasOne("Strengthify.Models.User", "CreatedBy")
+                        .WithMany("ProgramCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .HasConstraintName("fk_programs_users_created_by_user_id");
+
+                    b.HasOne("Strengthify.Models.User", "UpdatedBy")
+                        .WithMany("ProgramUpdated")
+                        .HasForeignKey("UpdatedByUserId")
+                        .HasConstraintName("fk_programs_users_updated_by_user_id");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("UpdatedBy");
+                });
+
             modelBuilder.Entity("Strengthify.Models.ProgramDetail", b =>
                 {
+                    b.HasOne("Strengthify.Models.User", "CreatedBy")
+                        .WithMany("ProgramDetailCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .HasConstraintName("fk_program_details_users_created_by_user_id");
+
                     b.HasOne("Strengthify.Models.Program", "Program")
                         .WithMany("ProgramDetails")
                         .HasForeignKey("ProgramId")
@@ -426,17 +519,49 @@ namespace StrengthifyNETAPI.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_program_details_programs_program_id");
 
+                    b.HasOne("Strengthify.Models.User", "UpdatedBy")
+                        .WithMany("ProgramDetailUpdated")
+                        .HasForeignKey("UpdatedByUserId")
+                        .HasConstraintName("fk_program_details_users_updated_by_user_id");
+
+                    b.HasOne("Strengthify.Models.Workout", "Workout")
+                        .WithMany()
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_program_details_workouts_workout_id");
+
+                    b.Navigation("CreatedBy");
+
                     b.Navigation("Program");
+
+                    b.Navigation("UpdatedBy");
+
+                    b.Navigation("Workout");
                 });
 
             modelBuilder.Entity("Strengthify.Models.User", b =>
                 {
+                    b.HasOne("Strengthify.Models.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_users_users_created_by_id");
+
                     b.HasOne("Strengthify.Models.Program", "Program")
                         .WithMany()
                         .HasForeignKey("ProgramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_users_programs_program_id");
+
+                    b.HasOne("Strengthify.Models.User", "UpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("UpdatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_users_users_updated_by_id");
 
                     b.HasOne("Strengthify.Models.Workout", "Workout")
                         .WithMany()
@@ -445,13 +570,44 @@ namespace StrengthifyNETAPI.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_users_workouts_workout_id");
 
+                    b.Navigation("CreatedBy");
+
                     b.Navigation("Program");
+
+                    b.Navigation("UpdatedBy");
 
                     b.Navigation("Workout");
                 });
 
+            modelBuilder.Entity("Strengthify.Models.Workout", b =>
+                {
+                    b.HasOne("Strengthify.Models.User", "CreatedBy")
+                        .WithMany("WorkoutCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .HasConstraintName("fk_workouts_users_created_by_user_id");
+
+                    b.HasOne("Strengthify.Models.User", "UpdatedBy")
+                        .WithMany("WorkoutUpdated")
+                        .HasForeignKey("UpdatedByUserId")
+                        .HasConstraintName("fk_workouts_users_updated_by_user_id");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("UpdatedBy");
+                });
+
             modelBuilder.Entity("Strengthify.Models.WorkoutExercise", b =>
                 {
+                    b.HasOne("Strengthify.Models.User", "CreatedBy")
+                        .WithMany("WorkoutExerciseCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .HasConstraintName("fk_workout_exercises_users_created_by_user_id");
+
+                    b.HasOne("Strengthify.Models.User", "UpdatedBy")
+                        .WithMany("WorkoutExerciseUpdated")
+                        .HasForeignKey("UpdatedByUserId")
+                        .HasConstraintName("fk_workout_exercises_users_updated_by_user_id");
+
                     b.HasOne("Strengthify.Models.Workout", "Workout")
                         .WithMany("WorkoutExercises")
                         .HasForeignKey("WorkoutId")
@@ -459,11 +615,40 @@ namespace StrengthifyNETAPI.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_workout_exercises_workouts_workout_id");
 
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("UpdatedBy");
+
                     b.Navigation("Workout");
                 });
 
             modelBuilder.Entity("Strengthify.Models.WorkoutExerciseDetail", b =>
                 {
+                    b.HasOne("Strengthify.Models.User", "CreatedBy")
+                        .WithMany("WorkoutExerciseDetailCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .HasConstraintName("fk_workout_exercise_details_users_created_by_user_id");
+
+                    b.HasOne("Strengthify.Models.IncrementFrequency", "RepsIncrementFrequency")
+                        .WithMany()
+                        .HasForeignKey("RepsIncrementFrequencyIncrementFrequencyId")
+                        .HasConstraintName("fk_workout_exercise_details_increment_frequencies_reps_increme");
+
+                    b.HasOne("Strengthify.Models.IncrementFrequency", "SetDurationIncrementFrequency")
+                        .WithMany()
+                        .HasForeignKey("SetDurationIncrementFrequencyIncrementFrequencyId")
+                        .HasConstraintName("fk_workout_exercise_details_increment_frequencies_set_duration");
+
+                    b.HasOne("Strengthify.Models.User", "UpdatedBy")
+                        .WithMany("WorkoutExerciseDetailUpdated")
+                        .HasForeignKey("UpdatedByUserId")
+                        .HasConstraintName("fk_workout_exercise_details_users_updated_by_user_id");
+
+                    b.HasOne("Strengthify.Models.IncrementFrequency", "WeightIncrementFrequency")
+                        .WithMany()
+                        .HasForeignKey("WeightIncrementFrequencyIncrementFrequencyId")
+                        .HasConstraintName("fk_workout_exercise_details_increment_frequencies_weight_incre");
+
                     b.HasOne("Strengthify.Models.WorkoutExercise", "WorkoutExercise")
                         .WithMany("WorkoutExerciseDetails")
                         .HasForeignKey("WorkoutExerciseId")
@@ -471,12 +656,49 @@ namespace StrengthifyNETAPI.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_workout_exercise_details_workout_exercises_workout_exercise");
 
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("RepsIncrementFrequency");
+
+                    b.Navigation("SetDurationIncrementFrequency");
+
+                    b.Navigation("UpdatedBy");
+
+                    b.Navigation("WeightIncrementFrequency");
+
                     b.Navigation("WorkoutExercise");
                 });
 
             modelBuilder.Entity("Strengthify.Models.Program", b =>
                 {
                     b.Navigation("ProgramDetails");
+                });
+
+            modelBuilder.Entity("Strengthify.Models.User", b =>
+                {
+                    b.Navigation("IncrementFrequencyCreated");
+
+                    b.Navigation("IncrementFrequencyUpdated");
+
+                    b.Navigation("ProgramCreated");
+
+                    b.Navigation("ProgramDetailCreated");
+
+                    b.Navigation("ProgramDetailUpdated");
+
+                    b.Navigation("ProgramUpdated");
+
+                    b.Navigation("WorkoutCreated");
+
+                    b.Navigation("WorkoutExerciseCreated");
+
+                    b.Navigation("WorkoutExerciseDetailCreated");
+
+                    b.Navigation("WorkoutExerciseDetailUpdated");
+
+                    b.Navigation("WorkoutExerciseUpdated");
+
+                    b.Navigation("WorkoutUpdated");
                 });
 
             modelBuilder.Entity("Strengthify.Models.Workout", b =>

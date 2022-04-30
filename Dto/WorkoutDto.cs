@@ -4,8 +4,10 @@ namespace StrengthifyNETAPI.Dto
 {
     public class WorkoutDto
     {
-        public int Id {get; set;}
+        public int WorkoutId {get; set;}
         public string WorkoutName {get; set;}
+        public int SequenceNum {get; set;}
+        public int CycleDayNum {get; set;}
 
     }
 }

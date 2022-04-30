@@ -81,52 +81,81 @@ namespace StrengthifyNETAPI.Controllers
         {
             // check if program already exists
             var program = await _context.Programs.FindAsync(newProgram.ProgramName);
-            
+            var user = await _context.Users.FindAsync(newProgram.UserId);
+
             if(program != null)
             {
                 return BadRequest();
             }
 
-/*
+            if(user == null)
+            {
+                return Unauthorized();
+            }
+
             // build Program model
             var programModel = new Program {
                 ProgramName = newProgram.ProgramName,
                 TotalCycleDays = newProgram.Workouts.Length,
-                CreatedBy = newProgram.UserId,
-                UpdatedBy = newProgram.UserId
-            };
-            
-            _context.Programs.Add(programModel);
-            
+                CreatedBy = user,
+                UpdatedBy = user
+            };   
+
             // build Workout model
             List<Workout> workouts = new List<Workout>();
             foreach(var workout in newProgram.Workouts)
             {
                 var newWorkout = new Workout{
                     WorkoutName = workout.WorkoutName,
-                    CreatedBy = newProgram.UserId,
-                    UpdatedBy = newProgram.UserId
+                    CreatedBy = user,
+                    UpdatedBy = user
                 };
+                var newProgramDetail = new ProgramDetail {
+                    SequenceNum = workout.SequenceNum,
+                    CycleDayNum = workout.CycleDayNum,
+                    Workout = newWorkout,
+                    CreatedBy = user,
+                    UpdatedBy = user
+                };
+
+                programModel.ProgramDetails.Add(newProgramDetail);
                 workouts.Add(newWorkout);
-                programModel.ProgramDetails.Add(new ProgramDetail{
-                    ProgramId = programModel.Id,
-                    WorkoutId = newWorkout.Id,
+            }  
 
-                });
-            }
-            
-
+            // build WorkoutExercise model
             List<WorkoutExercise> workoutExercises = new List<WorkoutExercise>();
             foreach(var exercise in newProgram.Exercises)
             {
-                workoutExercises.Add(new WorkoutExercise {
-                    WorkoutId = workouts.Find()
-                });
+                var newWorkoutExercise = new WorkoutExercise {
+                    Workout = workouts.Single(c => c.WorkoutName == exercise.WorkoutName),
+                    SequenceNum = exercise.SequenceNum,
+                    Exercise = exercise.Exercise
+                };
+                
+                workoutExercises.Add(newWorkoutExercise);
             }
 
+            // build WorkoutExerciseDetail model
+            List<WorkoutExerciseDetail> workoutExerciseDetails = new List<WorkoutExerciseDetail>();
+            foreach(var set in newProgram.Sets)
+            {
+                var newWorkoutExerciseDetail = new WorkoutExerciseDetail {
+                    Set = set.Set,
+                    Reps = set.Reps,
+                    Weight = set.Weight,
+                    SetDuration = set.SetDuration,
+                    SetRestDuration = set.SetRestDuration,
+                    MaxReps = set.MaxReps,
+                    MaxWeight = set.MaxWeight,
+                    MaxSetDuration = set.MaxSetDuration,
+
+                };
+                
+                workoutExerciseDetails.Add(newWorkoutExerciseDetail);
+            }
             
             //_context.Programs.Add(program);
-  */
+
             try {
                 await _context.SaveChangesAsync();
             }

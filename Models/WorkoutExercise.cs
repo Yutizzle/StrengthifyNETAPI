@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace Strengthify.Models
@@ -9,9 +10,9 @@ namespace Strengthify.Models
          public int WorkoutExerciseId {get; set;}
          public int SequenceNum {get; set;}
          public string Exercise {get; set;}
-         public Guid CreatedBy {get; set;}
+         public User CreatedBy {get; set;}
          public DateTimeOffset CreatedAt {get; set;}
-         public Guid UpdatedBy {get; set;}
+         public User UpdatedBy {get; set;}
          public DateTimeOffset UpdatedAt{get; set;}
 
          public ICollection<WorkoutExerciseDetail> WorkoutExerciseDetails {get; set;}

@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace Strengthify.Models
@@ -14,16 +15,17 @@ namespace Strengthify.Models
          public int MaxReps {get; set;}
          public int MaxWeight {get; set;}
          public int MaxSetDuration {get; set;}
-         public int RepsIncrementFrequencyId {get; set;}
-         public int WeightIncrementFrequencyId {get; set;}
-         public int SetDurationIncrementFrequencyId {get; set;}
          public int RepsIncrementAmount {get; set;}
          public int WeightIncrementAmount {get; set;}
          public int SetDurationIncrementAmount {get; set;}
+         
+         public IncrementFrequency RepsIncrementFrequency {get; set;}
+         public IncrementFrequency WeightIncrementFrequency {get; set;}
+         public IncrementFrequency SetDurationIncrementFrequency {get; set;}
          public string Exercise {get; set;}
-         public Guid CreatedBy {get; set;}
+         public User CreatedBy {get; set;}
          public DateTimeOffset CreatedAt {get; set;}
-         public Guid UpdatedBy {get; set;}
+         public User UpdatedBy {get; set;}
          public DateTimeOffset UpdatedAt{get; set;}
 
          

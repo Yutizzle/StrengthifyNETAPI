@@ -4,7 +4,7 @@ namespace StrengthifyNETAPI.Dto
 {
     public class ProgramWriteDto
     {
-        public int Id {get; set;}
+        public int ProgramId {get; set;}
         public string ProgramName {get; set;}
         public WorkoutDto[] Workouts {get; set;}
         public ExerciseDto[] Exercises {get; set;}
