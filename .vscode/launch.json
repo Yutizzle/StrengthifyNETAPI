@@ -23,7 +23,11 @@
         "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
       },
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SUPABASE_URL": "https://comnwzdkrpnewmjrhowt.supabase.co",
+        "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNTYzMDc3MSwiZXhwIjoxOTUxMjA2NzcxfQ.4Ljuc-U6g6EH-O2olSHMlNF5hd7FrTubBAGhLMrjH7w",
+        "SUPABASE_SERVICE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjM1NjMwNzcxLCJleHAiOjE5NTEyMDY3NzF9.B-EtQcm9CqFOrmNUFfLqOmXJfmh4F0ER91-kujhXsjY",
+        "JWT_SECRET": "a05facb7-d589-4f50-8591-ba2832e2ac08"
       },
       "sourceFileMap": {
         "/Views": "${workspaceFolder}/Views"
