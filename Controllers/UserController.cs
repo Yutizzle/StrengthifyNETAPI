@@ -122,7 +122,7 @@ namespace StrengthifyNETAPI.Controllers
             }
             else
             {
-                return BadRequest(httpResponseMessage);
+                return BadRequest(new { message = "An error occurred while registering a new user.", httpResponseMessage });
             }
 
             // Build new User model
@@ -144,7 +144,7 @@ namespace StrengthifyNETAPI.Controllers
             _context.Users.Update(newUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = newUser.UserId }, user);
+            return CreatedAtAction("GetUser", new { id = newUser.UserId }, new { refresh_token = signUpResponse.refresh_token });
         }
 
         // DELETE: api/User/5
