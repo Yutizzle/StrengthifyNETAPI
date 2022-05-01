@@ -1,26 +1,31 @@
+using static System.Net.Mime.MediaTypeNames;
+using System.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Strengthify;
 using Strengthify.Models;
 using StrengthifyNETAPI.Dto;
+using System.Text.Json;
 
 namespace StrengthifyNETAPI.Controllers
-{  
+{
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly StrengthifyContext _context;
-
-        public UserController(StrengthifyContext context)
+        private readonly IHttpClientFactory _httpClientFactory;
+        public UserController(StrengthifyContext context, IHttpClientFactory httpClientFactory)
         {
             _context = context;
+            _httpClientFactory = httpClientFactory;
         }
 
         // GET: api/User
@@ -29,9 +34,10 @@ namespace StrengthifyNETAPI.Controllers
         {
             var users = await _context.Users.ToListAsync();
             List<UserReadDto> userDto = new List<UserReadDto>();
-            foreach(var user in users)
+            foreach (var user in users)
             {
-                userDto.Add(new UserReadDto {
+                userDto.Add(new UserReadDto
+                {
                     Uuid = user.Uuid,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
@@ -93,20 +99,47 @@ namespace StrengthifyNETAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<UserWriteDto>> PostUser(UserWriteDto user)
         {
-            DateTime birthDate = DateTime.SpecifyKind(DateTime.Parse(user.DateOfBirth).Date, DateTimeKind.Utc);
-            var newUser = new User { 
-                Uuid = user.Uuid,
+            // Validate date of birth
+            DateTime birthDate = DateTime.MinValue;
+            try
+            {
+                birthDate = DateTime.SpecifyKind(DateTime.Parse(user.DateOfBirth).Date, DateTimeKind.Utc);
+            }
+            catch
+            {
+                return BadRequest("Date of Birth is invalid.");
+            }
+
+            // Sign up user to supabase
+            var httpClient = _httpClientFactory.CreateClient("SupabaseAuth");
+            var payload = new StringContent(JsonSerializer.Serialize(new { email = user.Email, password = user.Password }), Encoding.UTF8, Application.Json);
+            var httpResponseMessage = await httpClient.PostAsync("signup", payload);
+            SupabaseSignupResponseDto signUpResponse = new SupabaseSignupResponseDto();
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
+                signUpResponse = await JsonSerializer.DeserializeAsync<SupabaseSignupResponseDto>(contentStream);
+            }
+            else
+            {
+                return BadRequest(httpResponseMessage);
+            }
+
+            // Build new User model
+            var newUser = new User
+            {
+                Uuid = signUpResponse.user.id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 DateOfBirth = birthDate,
                 Email = user.Email
             };
 
-            // create new user
+            // Create new user in database
             _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
-            // update CreatedById
+            // Update CreatedById
             newUser.CreatedById = newUser.UserId;
             _context.Users.Update(newUser);
             await _context.SaveChangesAsync();

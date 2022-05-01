@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Strengthify;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Net.Http.Headers;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -27,7 +28,6 @@ namespace StrengthifyNETAPI
         }
 
         public IConfiguration Configuration { get; }
-        private IWebHostEnvironment _env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -66,6 +66,16 @@ namespace StrengthifyNETAPI
                     };
                 });
 
+            // register supabase auth client
+            services.AddHttpClient("SupabaseAuth", httpClient =>
+            {
+                string auth = Configuration.GetValue<string>("SupabaseAuthUrlFormat", "{0}/auth/v1/");
+                string supabase = Environment.GetEnvironmentVariable("SUPABASE_URL");
+                string serviceKey = Environment.GetEnvironmentVariable("SUPABASE_SERVICE_KEY");
+                httpClient.BaseAddress = new Uri(string.Format(auth, supabase));
+                httpClient.DefaultRequestHeaders.Add("apiKey", serviceKey);
+            });
+
             services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
@@ -76,8 +86,9 @@ namespace StrengthifyNETAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "StrengthifyNETAPI v1"); 
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "StrengthifyNETAPI v1");
                     c.RoutePrefix = "";
                 });
             }

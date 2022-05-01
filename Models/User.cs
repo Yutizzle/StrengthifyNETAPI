@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Strengthify.Models
 {
-    [Index(nameof(UserId), IsUnique = true)]
+    [Index(nameof(UserId), nameof(Uuid), IsUnique = true)]
     public class User : BaseEntity {
          public int UserId {get; set;}
          public Guid Uuid {get; set;}
