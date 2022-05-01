@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Strengthify;
@@ -11,9 +12,10 @@ using Strengthify;
 namespace StrengthifyNETAPI.Migrations
 {
     [DbContext(typeof(StrengthifyContext))]
-    partial class StrengthifyContextModelSnapshot : ModelSnapshot
+    [Migration("20220501040531_UpdateWorkoutExerciseDetailsIncrFreqNullable")]
+    partial class UpdateWorkoutExerciseDetailsIncrFreqNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,7 +274,7 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("created_by_id");
 
-                    b.Property<Guid?>("ImageObjectId")
+                    b.Property<Guid>("ImageObjectId")
                         .HasColumnType("uuid")
                         .HasColumnName("image_object_id");
 

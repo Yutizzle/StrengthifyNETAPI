@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Strengthify;
@@ -11,9 +12,10 @@ using Strengthify;
 namespace StrengthifyNETAPI.Migrations
 {
     [DbContext(typeof(StrengthifyContext))]
-    partial class StrengthifyContextModelSnapshot : ModelSnapshot
+    [Migration("20220501033700_UpdateWorkoutExerciseDetailIncrementFreqIdRelationship")]
+    partial class UpdateWorkoutExerciseDetailIncrementFreqIdRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,7 +274,7 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("created_by_id");
 
-                    b.Property<Guid?>("ImageObjectId")
+                    b.Property<Guid>("ImageObjectId")
                         .HasColumnType("uuid")
                         .HasColumnName("image_object_id");
 
@@ -374,6 +376,10 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("created_by_id");
 
+                    b.Property<string>("Exercise")
+                        .HasColumnType("text")
+                        .HasColumnName("exercise");
+
                     b.Property<int>("MaxReps")
                         .HasColumnType("integer")
                         .HasColumnName("max_reps");
@@ -394,7 +400,7 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("reps_increment_amount");
 
-                    b.Property<int?>("RepsIncrementFrequencyId")
+                    b.Property<int>("RepsIncrementFrequencyId")
                         .HasColumnType("integer")
                         .HasColumnName("reps_increment_frequency_id");
 
@@ -410,7 +416,7 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("set_duration_increment_amount");
 
-                    b.Property<int?>("SetDurationIncrementFrequencyId")
+                    b.Property<int>("SetDurationIncrementFrequencyId")
                         .HasColumnType("integer")
                         .HasColumnName("set_duration_increment_frequency_id");
 
@@ -434,7 +440,7 @@ namespace StrengthifyNETAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("weight_increment_amount");
 
-                    b.Property<int?>("WeightIncrementFrequencyId")
+                    b.Property<int>("WeightIncrementFrequencyId")
                         .HasColumnType("integer")
                         .HasColumnName("weight_increment_frequency_id");
 
@@ -620,11 +626,15 @@ namespace StrengthifyNETAPI.Migrations
                     b.HasOne("Strengthify.Models.IncrementFrequency", "RepsIncrementFrequency")
                         .WithMany()
                         .HasForeignKey("RepsIncrementFrequencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_workout_exercise_details_increment_frequencies_reps_increme");
 
                     b.HasOne("Strengthify.Models.IncrementFrequency", "SetDurationIncrementFrequency")
                         .WithMany()
                         .HasForeignKey("SetDurationIncrementFrequencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_workout_exercise_details_increment_frequencies_set_duration");
 
                     b.HasOne("Strengthify.Models.User", "UpdatedBy")
@@ -635,6 +645,8 @@ namespace StrengthifyNETAPI.Migrations
                     b.HasOne("Strengthify.Models.IncrementFrequency", "WeightIncrementFrequency")
                         .WithMany()
                         .HasForeignKey("WeightIncrementFrequencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_workout_exercise_details_increment_frequencies_weight_incre");
 
                     b.HasOne("Strengthify.Models.WorkoutExercise", "WorkoutExercise")

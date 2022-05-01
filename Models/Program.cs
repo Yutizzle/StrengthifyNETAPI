@@ -5,11 +5,12 @@ using Microsoft.EntityFrameworkCore;
 namespace Strengthify.Models
 {
     [Index(nameof(ProgramName), IsUnique = true)]
-    public class Program : BaseEntity {
-         public int ProgramId {get; init;}
-         public string ProgramName {get; init;}
-         public int TotalCycleDays {get; init;}
-         
-         public ICollection<ProgramDetail> ProgramDetails {get; init;}
+    public class Program : BaseEntity
+    {
+        public int ProgramId { get; init; }
+        public string ProgramName { get; init; }
+        public int TotalCycleDays { get; init; }
+
+        public ICollection<ProgramDetail> ProgramDetails { get; init; }
     }
 }

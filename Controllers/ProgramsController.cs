@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Strengthify;
 using Strengthify.Models;
 using StrengthifyNETAPI.Dto;
+using System.Text.Json;
 
 namespace StrengthifyNETAPI.Controllers
 {
@@ -80,37 +79,43 @@ namespace StrengthifyNETAPI.Controllers
         public async Task<ActionResult<ProgramWriteDto>> PostProgram(ProgramWriteDto newProgram)
         {
             // check if program already exists
-            var program = await _context.Programs.FindAsync(newProgram.ProgramName);
-            var user = await _context.Users.FindAsync(newProgram.UserId);
+            var program = await _context.Programs.SingleOrDefaultAsync(x => x.ProgramName == newProgram.ProgramName);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Uuid == newProgram.UserId);
 
-            if(program != null)
+            if (program != null)
             {
-                return BadRequest();
+                return BadRequest("Program already exists.");
             }
 
-            if(user == null)
+            if (user == null)
             {
-                return Unauthorized();
+                return Unauthorized("User not authorized.");
             }
 
             // build Program model
-            var programModel = new Program {
+            var programs = new Program
+            {
                 ProgramName = newProgram.ProgramName,
                 TotalCycleDays = newProgram.Workouts.Length,
                 CreatedBy = user,
                 UpdatedBy = user
-            };   
+            };
+
+            _context.Programs.Add(programs);
 
             // build Workout model
             List<Workout> workouts = new List<Workout>();
-            foreach(var workout in newProgram.Workouts)
+            foreach (var workout in newProgram.Workouts)
             {
-                var newWorkout = new Workout{
+                var newWorkout = new Workout
+                {
                     WorkoutName = workout.WorkoutName,
                     CreatedBy = user,
                     UpdatedBy = user
                 };
-                var newProgramDetail = new ProgramDetail {
+                var newProgramDetail = new ProgramDetail
+                {
+                    Program = programs,
                     SequenceNum = workout.SequenceNum,
                     CycleDayNum = workout.CycleDayNum,
                     Workout = newWorkout,
@@ -118,28 +123,34 @@ namespace StrengthifyNETAPI.Controllers
                     UpdatedBy = user
                 };
 
-                programModel.ProgramDetails.Add(newProgramDetail);
+                _context.ProgramDetails.Add(newProgramDetail);
+                _context.Workouts.Add(newWorkout);
                 workouts.Add(newWorkout);
-            }  
+            }
 
             // build WorkoutExercise model
             List<WorkoutExercise> workoutExercises = new List<WorkoutExercise>();
-            foreach(var exercise in newProgram.Exercises)
+            foreach (var exercise in newProgram.Exercises)
             {
-                var newWorkoutExercise = new WorkoutExercise {
+                var newWorkoutExercise = new WorkoutExercise
+                {
                     Workout = workouts.Single(c => c.WorkoutName == exercise.WorkoutName),
                     SequenceNum = exercise.SequenceNum,
                     Exercise = exercise.Exercise
                 };
-                
+
+                _context.WorkoutExercises.Add(newWorkoutExercise);
                 workoutExercises.Add(newWorkoutExercise);
             }
 
             // build WorkoutExerciseDetail model
             List<WorkoutExerciseDetail> workoutExerciseDetails = new List<WorkoutExerciseDetail>();
-            foreach(var set in newProgram.Sets)
+            List<IncrementFrequency> incrementFrequencies = _context.IncrementFrequencies.ToList();
+            foreach (var set in newProgram.Sets)
             {
-                var newWorkoutExerciseDetail = new WorkoutExerciseDetail {
+
+                var newWorkoutExerciseDetail = new WorkoutExerciseDetail
+                {
                     Set = set.Set,
                     Reps = set.Reps,
                     Weight = set.Weight,
@@ -148,23 +159,26 @@ namespace StrengthifyNETAPI.Controllers
                     MaxReps = set.MaxReps,
                     MaxWeight = set.MaxWeight,
                     MaxSetDuration = set.MaxSetDuration,
-
+                    WeightIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.WeightIncrementFrequencyId),
+                    RepsIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.RepsIncrementFrequencyId),
+                    SetDurationIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.SetDurationIncrementFrequencyId),
+                    WorkoutExercise = workoutExercises.FirstOrDefault(x => x.Exercise == set.Exercise)
                 };
-                
-                workoutExerciseDetails.Add(newWorkoutExerciseDetail);
-            }
-            
-            //_context.Programs.Add(program);
 
-            try {
+                _context.WorkoutExerciseDetails.Add(newWorkoutExerciseDetail);
+            }
+
+            // insert into database
+            try
+            {
                 await _context.SaveChangesAsync();
             }
-            catch(DbUpdateException) 
+            catch (DbUpdateException)
             {
                 return Conflict();
             }
 
-            return CreatedAtAction("GetProgram", new { id = program.ProgramId }, program);
+            return CreatedAtAction("GetProgram", new { id = programs.ProgramId }, newProgram);
         }
 
         // DELETE: api/Programs/5
