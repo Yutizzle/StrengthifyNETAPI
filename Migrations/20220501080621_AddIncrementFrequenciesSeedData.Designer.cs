@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Strengthify;
@@ -11,9 +12,10 @@ using Strengthify;
 namespace StrengthifyNETAPI.Migrations
 {
     [DbContext(typeof(StrengthifyContext))]
-    partial class StrengthifyContextModelSnapshot : ModelSnapshot
+    [Migration("20220501080621_AddIncrementFrequenciesSeedData")]
+    partial class AddIncrementFrequenciesSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,46 +72,46 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             IncrementFrequencyId = 2,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Frequency = "CYCLE_END",
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1
                         },
                         new
                         {
                             IncrementFrequencyId = 3,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Frequency = "MAX_REPS_REACHED",
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1
                         },
                         new
                         {
                             IncrementFrequencyId = 4,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Frequency = "MAX_WEIGHT_REACHED",
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1
                         },
                         new
                         {
                             IncrementFrequencyId = 5,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Frequency = "NEW_PR",
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1
                         },
                         new
                         {
                             IncrementFrequencyId = 6,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Frequency = "MAX_SET_DURATION_REACHED",
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1
                         });
                 });
@@ -166,11 +168,11 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             ProgramId = 7,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             ProgramName = "Simple 3x5",
                             TotalCycleDays = 4,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1
                         });
                 });
@@ -238,48 +240,48 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             ProgramDetailId = 9,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             CycleDayNum = 1,
                             ProgramId = 7,
                             SequenceNum = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 8
                         },
                         new
                         {
                             ProgramDetailId = 11,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             CycleDayNum = 2,
                             ProgramId = 7,
                             SequenceNum = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 10
                         },
                         new
                         {
                             ProgramDetailId = 13,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             CycleDayNum = 3,
                             ProgramId = 7,
                             SequenceNum = 2,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 12
                         },
                         new
                         {
                             ProgramDetailId = 15,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             CycleDayNum = 4,
                             ProgramId = 7,
                             SequenceNum = 3,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 14
                         });
@@ -367,16 +369,16 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             DateOfBirth = new DateTime(1994, 2, 3, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "admin@admin.com",
                             FirstName = "Admin",
                             LastName = "Admin",
                             ProgramRun = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
-                            Uuid = new Guid("29ed5754-b19a-41fb-a902-6503717850ad")
+                            Uuid = new Guid("8a6069de-9e2e-4b0f-b5fb-36cf4df582ad")
                         });
                 });
 
@@ -432,36 +434,36 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutId = 8,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutName = "Bench Day"
                         },
                         new
                         {
                             WorkoutId = 10,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutName = "Squat Day"
                         },
                         new
                         {
                             WorkoutId = 12,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutName = "Overhead Press Day"
                         },
                         new
                         {
                             WorkoutId = 14,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutName = "Deadlift Day"
                         });
@@ -523,220 +525,220 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseId = 16,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Bench Press",
                             SequenceNum = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 8
                         },
                         new
                         {
                             WorkoutExerciseId = 17,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Overhead Press",
                             SequenceNum = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 8
                         },
                         new
                         {
                             WorkoutExerciseId = 18,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "T-Bar Row",
                             SequenceNum = 2,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 8
                         },
                         new
                         {
                             WorkoutExerciseId = 19,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Tricep Pushdown",
                             SequenceNum = 3,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 8
                         },
                         new
                         {
                             WorkoutExerciseId = 20,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Dumbbell Bicep Curl",
                             SequenceNum = 4,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 8
                         },
                         new
                         {
                             WorkoutExerciseId = 21,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Squat",
                             SequenceNum = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 10
                         },
                         new
                         {
                             WorkoutExerciseId = 22,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Romanian Deadlift",
                             SequenceNum = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 10
                         },
                         new
                         {
                             WorkoutExerciseId = 23,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Lat Pull Down",
                             SequenceNum = 2,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 10
                         },
                         new
                         {
                             WorkoutExerciseId = 24,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Bulgarian Split Squat",
                             SequenceNum = 3,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 10
                         },
                         new
                         {
                             WorkoutExerciseId = 25,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Jump Rope",
                             SequenceNum = 4,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 10
                         },
                         new
                         {
                             WorkoutExerciseId = 26,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Overhead Press",
                             SequenceNum = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 12
                         },
                         new
                         {
                             WorkoutExerciseId = 27,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Incline Bench Press",
                             SequenceNum = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 12
                         },
                         new
                         {
                             WorkoutExerciseId = 28,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Barbell Row",
                             SequenceNum = 2,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 12
                         },
                         new
                         {
                             WorkoutExerciseId = 29,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Tricep Overhead Extension",
                             SequenceNum = 3,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 12
                         },
                         new
                         {
                             WorkoutExerciseId = 30,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Dumbbell Lat Raise",
                             SequenceNum = 4,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 12
                         },
                         new
                         {
                             WorkoutExerciseId = 31,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Deadlift",
                             SequenceNum = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 14
                         },
                         new
                         {
                             WorkoutExerciseId = 32,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Front Squat",
                             SequenceNum = 1,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 14
                         },
                         new
                         {
                             WorkoutExerciseId = 33,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Pull-up",
                             SequenceNum = 2,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 14
                         },
                         new
                         {
                             WorkoutExerciseId = 34,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Glute Raise",
                             SequenceNum = 3,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 14
                         },
                         new
                         {
                             WorkoutExerciseId = 35,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            CreatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             CreatedById = 1,
                             Exercise = "Face Pull",
                             SequenceNum = 4,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
+                            UpdatedAt = new DateTime(2022, 5, 1, 8, 6, 21, 354, DateTimeKind.Utc).AddTicks(797),
                             UpdatedById = 1,
                             WorkoutId = 14
                         });
@@ -855,8 +857,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 36,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -866,8 +867,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 155,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 16
@@ -875,8 +875,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 37,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -886,8 +885,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 155,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 16
@@ -895,8 +893,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 38,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -906,8 +903,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 155,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 16
@@ -915,8 +911,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 39,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -926,8 +921,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 85,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 17
@@ -935,8 +929,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 40,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -946,8 +939,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 85,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 17
@@ -955,8 +947,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 41,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -966,8 +957,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 85,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 17
@@ -975,8 +965,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 42,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -986,8 +975,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 100,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 18
@@ -995,8 +983,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 43,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1006,8 +993,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 100,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 18
@@ -1015,8 +1001,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 44,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1026,8 +1011,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 100,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 18
@@ -1035,8 +1019,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 45,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1046,8 +1029,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 35,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 19
@@ -1055,8 +1037,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 46,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1066,8 +1047,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 35,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 19
@@ -1075,8 +1055,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 47,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1086,8 +1065,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 35,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 19
@@ -1095,8 +1073,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 48,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1106,8 +1083,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 30,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 20
@@ -1115,8 +1091,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 49,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1126,8 +1101,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 30,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 20
@@ -1135,8 +1109,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 50,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1146,8 +1119,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 30,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 20
@@ -1155,8 +1127,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 51,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1166,8 +1137,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 185,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 21
@@ -1175,8 +1145,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 52,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1186,8 +1155,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 185,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 21
@@ -1195,8 +1163,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 53,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1206,8 +1173,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 185,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 21
@@ -1215,8 +1181,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 54,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1226,8 +1191,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 22
@@ -1235,8 +1199,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 55,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1246,8 +1209,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 22
@@ -1255,8 +1217,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 56,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1266,8 +1227,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 22
@@ -1275,8 +1235,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 57,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1286,8 +1245,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 40,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 23
@@ -1295,8 +1253,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 58,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1306,8 +1263,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 40,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 23
@@ -1315,8 +1271,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 59,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1326,8 +1281,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 40,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 23
@@ -1335,8 +1289,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 60,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1346,8 +1299,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 10,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 24
@@ -1355,8 +1307,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 61,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1366,8 +1317,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 10,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 24
@@ -1375,8 +1325,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 62,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1386,8 +1335,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 10,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 24
@@ -1395,8 +1343,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 63,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1406,8 +1353,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 30,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 25
@@ -1415,8 +1361,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 64,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1426,8 +1371,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 30,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 25
@@ -1435,8 +1379,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 65,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1446,8 +1389,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 30,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 25
@@ -1455,8 +1397,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 66,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1466,8 +1407,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 26
@@ -1475,8 +1415,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 67,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1486,8 +1425,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 26
@@ -1495,8 +1433,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 68,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1506,8 +1443,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 26
@@ -1515,8 +1451,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 69,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1526,8 +1461,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 85,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 27
@@ -1535,8 +1469,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 70,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1546,8 +1479,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 85,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 27
@@ -1555,8 +1487,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 71,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1566,8 +1497,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 85,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 27
@@ -1575,8 +1505,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 72,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1586,8 +1515,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 28
@@ -1595,8 +1523,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 73,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1606,8 +1533,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 28
@@ -1615,8 +1541,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 74,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1626,8 +1551,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 28
@@ -1635,8 +1559,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 75,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1646,8 +1569,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 40,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 29
@@ -1655,8 +1577,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 76,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1666,8 +1587,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 40,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 29
@@ -1675,8 +1595,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 77,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1686,8 +1605,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 40,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 29
@@ -1695,8 +1613,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 78,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1706,8 +1623,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 10,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 30
@@ -1715,8 +1631,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 79,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1726,8 +1641,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 10,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 30
@@ -1735,8 +1649,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 80,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1746,8 +1659,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 10,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 30
@@ -1755,8 +1667,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 81,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1766,8 +1677,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 225,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 31
@@ -1775,8 +1685,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 82,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1786,8 +1695,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 225,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 31
@@ -1795,8 +1703,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 83,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1806,8 +1713,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 225,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 31
@@ -1815,8 +1721,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 84,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1826,8 +1731,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 32
@@ -1835,8 +1739,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 85,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1846,8 +1749,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 32
@@ -1855,8 +1757,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 86,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1866,8 +1767,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 32
@@ -1875,8 +1775,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 87,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1886,8 +1785,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 33
@@ -1895,8 +1793,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 88,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1906,8 +1803,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 33
@@ -1915,8 +1811,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 89,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1926,8 +1821,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 33
@@ -1935,8 +1829,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 90,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1946,8 +1839,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 34
@@ -1955,8 +1847,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 91,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1966,8 +1857,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 34
@@ -1975,8 +1865,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 92,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -1986,8 +1875,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 95,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 34
@@ -1995,8 +1883,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 93,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -2006,8 +1893,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 30,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 35
@@ -2015,8 +1901,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 94,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -2026,8 +1911,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 30,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 35
@@ -2035,8 +1919,7 @@ namespace StrengthifyNETAPI.Migrations
                         new
                         {
                             WorkoutExerciseDetailId = 95,
-                            CreatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            CreatedById = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxReps = 0,
                             MaxSetDuration = 0,
                             MaxWeight = 0,
@@ -2046,8 +1929,7 @@ namespace StrengthifyNETAPI.Migrations
                             SetDuration = 0,
                             SetDurationIncrementAmount = 0,
                             SetRestDuration = 0,
-                            UpdatedAt = new DateTime(2022, 5, 1, 8, 9, 29, 62, DateTimeKind.Utc).AddTicks(3678),
-                            UpdatedById = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 30,
                             WeightIncrementAmount = 0,
                             WorkoutExerciseId = 35
