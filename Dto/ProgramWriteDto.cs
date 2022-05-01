@@ -8,7 +8,7 @@ namespace StrengthifyNETAPI.Dto
         public WorkoutDto[] Workouts { get; set; }
         public ExerciseDto[] Exercises { get; set; }
         public SetsDto[] Sets { get; set; }
-        public Guid UserId { get; set; }
+        public Guid UserUuid { get; set; }
     }
 }
 

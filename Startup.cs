@@ -11,6 +11,7 @@ using Strengthify;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using StrengthifyNETAPI.Services;
 
 namespace StrengthifyNETAPI
 {
@@ -71,6 +72,9 @@ namespace StrengthifyNETAPI
             });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddScoped<UserService>();
+            services.AddScoped<ProgramsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
