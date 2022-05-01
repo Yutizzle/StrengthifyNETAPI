@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Strengthify;
 using Strengthify.Models;
 using StrengthifyNETAPI.Dto;
-using System.Text.Json;
 
 namespace StrengthifyNETAPI.Controllers
 {
