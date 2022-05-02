@@ -74,7 +74,7 @@ namespace StrengthifyNETAPI.Controllers
             // create new user
             User newUser = await _UsersRepository.CreateUserAsync(user, signUpResponse.user.id, birthDate);
 
-            return CreatedAtAction("GetUser", new { id = newUser.UserId }, new { refresh_token = signUpResponse.refresh_token });
+            return CreatedAtAction("GetUser", new { id = newUser.UserId }, new UserWriteResultDto { refresh_token = signUpResponse.refresh_token });
         }
     }
 }
