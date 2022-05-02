@@ -11,12 +11,12 @@ namespace StrengthifyNETAPI.Controllers
     [ApiController]
     public class ProgramsController : ControllerBase
     {
-        private readonly IProgramsRepository _programService;
+        private readonly IProgramsRepository _programsRepository;
         private readonly IUsersRepository _UsersRepository;
 
-        public ProgramsController(IProgramsRepository programService, IUsersRepository UsersRepository)
+        public ProgramsController(IProgramsRepository programsRepository, IUsersRepository UsersRepository)
         {
-            _programService = programService;
+            _programsRepository = programsRepository;
             _UsersRepository = UsersRepository;
         }
 
@@ -24,21 +24,21 @@ namespace StrengthifyNETAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Program>>> GetPrograms()
         {
-            return Ok(await _programService.GetAllProgramsAsync());
+            return Ok(await _programsRepository.GetAllProgramsAsync());
         }
 
         // GET: api/Programs/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Program>> GetProgram(int id)
         {
-            Program program = await _programService.GetProgramByIdAsync(id);
+            Program program = await _programsRepository.GetProgramByIdAsync(id);
 
             if (program == null)
             {
                 return NotFound();
             }
 
-            return program;
+            return Ok(program);
 
         }
 
@@ -49,7 +49,7 @@ namespace StrengthifyNETAPI.Controllers
         {
 
             // check if program already exists
-            Program program = await _programService.GetProgramByNameAsync(newProgram.ProgramName);
+            Program program = await _programsRepository.GetProgramByNameAsync(newProgram.ProgramName);
             User user = await _UsersRepository.GetUserByUuidAsync(newProgram.UserUuid);
 
             if (program != null)
@@ -62,7 +62,7 @@ namespace StrengthifyNETAPI.Controllers
                 return Unauthorized("User not authorized.");
             }
 
-            int ProgramId = await _programService.CreateProgramAsync(newProgram, user);
+            int ProgramId = await _programsRepository.CreateProgramAsync(newProgram, user);
 
             return CreatedAtAction("GetProgram", new { id = ProgramId }, newProgram);
         }
