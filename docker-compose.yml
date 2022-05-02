@@ -1,0 +1,27 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+volumes:
+  local_postgres_data: {}
+
+services:
+  strengthifynetapi:
+    image: strengthifynetapi
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - postgresdb
+
+  postgresdb:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
