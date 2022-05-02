@@ -14,13 +14,11 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/*.csproj'
+    projects: '$(System.DefaultWorkingDirectory)\src\*.csproj'
 
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+      StrengthifyNETAPI.Tests.dll
+    searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
