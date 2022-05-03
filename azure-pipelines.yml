@@ -54,14 +54,6 @@ steps:
 # Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 - task: KubernetesManifest@0
-  displayName: Create imagePullSecret
-  inputs:
-    action: createSecret
-    secretName: $(imagePullSecret)
-    dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-    kubernetesServiceConnection: $(kubernetesServiceConnection)
-
-- task: KubernetesManifest@0
   displayName: Deploy to Kubernetes cluster
   inputs:
     action: deploy
