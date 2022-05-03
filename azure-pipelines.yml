@@ -12,6 +12,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '99e70c24-2bf5-457f-a712-a10d995431e7'
+  kubernetesServiceConnection: 'StrengthifyCluster-default'
   imageRepository: 'strengthify'
   containerRegistry: 'strengthifycontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
@@ -58,6 +59,7 @@ steps:
     action: createSecret
     secretName: $(imagePullSecret)
     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+    kubernetesServiceConnection: $(kubernetesServiceConnection)
 
 - task: KubernetesManifest@0
   displayName: Deploy to Kubernetes cluster
@@ -70,3 +72,4 @@ steps:
       $(imagePullSecret)
     containers: |
       $(containerRegistry)/$(imageRepository):$(tag)
+    kubernetesServiceConnection: $(kubernetesServiceConnection)
