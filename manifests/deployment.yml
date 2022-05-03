@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: strengthify 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strengthify
+  template:
+    metadata:
+      labels:
+        app: strengthify 
+    spec:
+      containers:
+        - name: strengthify 
+          image: strengthifycontainerregistry.azurecr.io/strengthify
+          ports:
+          - containerPort: 5000
