@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: '99e70c24-2bf5-457f-a712-a10d995431e7'
   imageRepository: 'strengthify'
   containerRegistry: 'strengthifycontainerregistry.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/src/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
 pool:
