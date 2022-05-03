@@ -6,23 +6,6 @@
 trigger:
 - main
 
-pool:
-  vmImage: windows11
-  name: Default
-
-steps:
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(System.DefaultWorkingDirectory)\src\*.csproj'
-
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      StrengthifyNETAPI.Tests.dll
-    searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
-
 # Docker
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
@@ -50,6 +33,17 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: '$(System.DefaultWorkingDirectory)\src\*.csproj'
+
+    - task: VSTest@2
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          StrengthifyNETAPI.Tests.dll
+        searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
