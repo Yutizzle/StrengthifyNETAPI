@@ -23,11 +23,12 @@ pool:
 
 
 steps:
+# Build .NET Core API application
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '$(System.DefaultWorkingDirectory)\src\*.csproj'
-
+# Test .NET Core API application
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -47,3 +48,25 @@ steps:
     containerRegistry: $(dockerRegistryServiceConnection)
     tags: |
       $(tag)
+
+# Deploy to Azure Kubernetes Service
+# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+- task: KubernetesManifest@0
+  displayName: Create imagePullSecret
+  inputs:
+    action: createSecret
+    secretName: $(imagePullSecret)
+    dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+
+- task: KubernetesManifest@0
+  displayName: Deploy to Kubernetes cluster
+  inputs:
+    action: deploy
+    manifests: |
+      $(Pipeline.Workspace)/manifests/deployment.yml
+      $(Pipeline.Workspace)/manifests/service.yml
+    imagePullSecrets: |
+      $(imagePullSecret)
+    containers: |
+      $(containerRegistry)/$(imageRepository):$(tag)
