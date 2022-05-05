@@ -10,7 +10,7 @@ services:
     image: strengthifynetapi
     build:
       context: .
-      dockerfile: src/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 5000:5000
     depends_on:
