@@ -37,6 +37,11 @@ stages:
       inputs:
         command: 'build'
         projects: '$(System.DefaultWorkingDirectory)\src\*.csproj'
+  - job: Test
+    displayName: Test
+    pool:
+      vmImage: $(vmImageName)
+    steps:
     # Test .NET Core API application
     - task: VSTest@2
       inputs:
@@ -44,6 +49,11 @@ stages:
         testAssemblyVer2: |
           StrengthifyNETAPI.Tests.dll
         searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
+  - job: Test
+    displayName: Build Image
+    pool:
+      vmImage: $(vmImageName)
+    steps:
     # Build Docker Image and Upload to Registry
     - task: Docker@2
       displayName: Build and push an image to container registry
