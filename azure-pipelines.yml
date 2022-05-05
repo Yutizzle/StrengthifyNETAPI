@@ -49,7 +49,7 @@ stages:
         testAssemblyVer2: |
           StrengthifyNETAPI.Tests.dll
         searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
-  - job: Test
+  - job: BuildImage
     displayName: Build Image
     pool:
       vmImage: $(vmImageName)
