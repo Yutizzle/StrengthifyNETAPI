@@ -25,10 +25,10 @@ pool:
 
 stages:
 - stage: Build
-  displayName: Build stage
+  displayName: Build & Deploy stage
   jobs:
   - job: Build
-    displayName: Build
+    displayName: Build & Deploy
     pool:
       vmImage: $(vmImageName)
     steps:
@@ -57,12 +57,7 @@ stages:
 
     - upload: manifests
       artifact: manifests
-
-- stage: Deploy
-  displayName: Deploy stage
-  dependsOn: Build
-
-  jobs:
+    
   - deployment: Deploy
     displayName: Deploy
     pool:
