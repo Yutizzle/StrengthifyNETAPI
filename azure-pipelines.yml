@@ -56,6 +56,7 @@ steps:
       azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
       azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
       dockerComposeFile: '**/docker-compose.yml'
+      dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
       action: 'Build services'
   - task: DockerCompose@0
     inputs:
@@ -63,6 +64,7 @@ steps:
       azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
       azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
       dockerComposeFile: '**/docker-compose.yml'
+      dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
       action: 'Push services'
 
   - upload: manifests
