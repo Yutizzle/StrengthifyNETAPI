@@ -25,7 +25,7 @@ pool:
 
 stages:
 - stage: Build
-  displayName: Build & Deploy stage
+  displayName: Build, Test, & Deploy stage
   jobs:
   - job: Build
     displayName: Build & Deploy
@@ -37,11 +37,7 @@ stages:
       inputs:
         command: 'build'
         projects: '$(System.DefaultWorkingDirectory)\src\*.csproj'
-  - job: Test
-    displayName: Test
-    pool:
-      vmImage: $(vmImageName)
-    steps:
+  
     # Test .NET Core API application
     - task: VSTest@2
       inputs:
@@ -49,11 +45,7 @@ stages:
         testAssemblyVer2: |
           StrengthifyNETAPI.Tests.dll
         searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
-  - job: BuildImage
-    displayName: Build Image
-    pool:
-      vmImage: $(vmImageName)
-    steps:
+  
     # Build Docker Image and Upload to Registry
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -67,31 +59,22 @@ stages:
 
     - upload: manifests
       artifact: manifests
-    
-  - deployment: Deploy
-    displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
-    environment: 'Strengthify-2116.default'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+      
+    - task: KubernetesManifest@0
+      displayName: Create imagePullSecret
+      inputs:
+        action: createSecret
+        secretName: $(imagePullSecret)
+        dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
 
-          - task: KubernetesManifest@0
-            displayName: Deploy to Kubernetes cluster
-            inputs:
-              action: deploy
-              manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
-              imagePullSecrets: |
-                $(imagePullSecret)
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
+    - task: KubernetesManifest@0
+      displayName: Deploy to Kubernetes cluster
+      inputs:
+        action: deploy
+        manifests: |
+          $(Pipeline.Workspace)/manifests/deployment.yml
+          $(Pipeline.Workspace)/manifests/service.yml
+        imagePullSecrets: |
+          $(imagePullSecret)
+        containers: |
+          $(containerRegistry)/$(imageRepository):$(tag)
