@@ -57,7 +57,6 @@ steps:
       azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
       dockerComposeFile: '**/docker-compose.yml'
       action: 'Run a Docker Compose command'
-      dockerComposeCommand: 'up'
 
   - upload: manifests
     artifact: manifests
