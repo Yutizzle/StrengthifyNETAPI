@@ -65,8 +65,8 @@ steps:
     inputs:
       action: deploy
       manifests: |
-        $(Pipeline.Workspace)/manifests/deployment.yml
-        $(Pipeline.Workspace)/manifests/service.yml
+        $(Build.SourcesDirectory)/manifests/deployment.yml
+        $(Build.SourcesDirectory)/manifests/service.yml
       imagePullSecrets: |
         $(imagePullSecret)
       containers: |
