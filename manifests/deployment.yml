@@ -13,7 +13,7 @@ spec:
         app: strengthify 
     spec:
       containers:
-        - name: strengthify 
-          image: strengthifycontainerregistry.azurecr.io/strengthify
+        - name: strengthifynetapi 
+          image: strengthifycontainerregistry.azurecr.io/strengthifynetapi
           ports:
           - containerPort: 5000
