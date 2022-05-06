@@ -34,6 +34,7 @@ namespace StrengthifyNETAPI
             });
 
             // database connection service
+            Console.WriteLine(String.Format("Adding Db Context with connection string: {0}", Configuration.GetConnectionString("StrengthifyContext")));
             services.AddDbContext<StrengthifyContext>(options =>
                 options
                 .UseNpgsql(Configuration.GetConnectionString("StrengthifyContext"))
