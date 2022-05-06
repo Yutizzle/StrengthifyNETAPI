@@ -37,7 +37,7 @@ steps:
         StrengthifyNETAPI.Tests.dll
       searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
 
-  # Run Docker Containers and Upload to Registry
+  # Run Build and Push Containers and Upload to Registry
   - task: DockerCompose@0
     displayName: 'Build Docker Images'
     inputs:
@@ -70,7 +70,8 @@ steps:
       
   - upload: manifests
     artifact: manifests
-    
+  
+  # Create Image Pull Secret
   - task: KubernetesManifest@0
     displayName: Create imagePullSecret
     inputs:
@@ -79,6 +80,7 @@ steps:
       dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
       kubernetesServiceConnection: $(kubernetesServiceConnection)
 
+  # Deploy NET Core App to Kubernetes Cluster
   - task: KubernetesManifest@0
     displayName: Deploy App to Kubernetes cluster
     inputs:
@@ -92,8 +94,9 @@ steps:
         $(containerRegistry)/$(imageRepository):$(Build.BuildId)
       kubernetesServiceConnection: $(kubernetesServiceConnection)
 
+  # Deploy postgresdb to Kubernetes Cluster
   - task: KubernetesManifest@0
-    displayName: Deploy DB to Kubernetes cluster
+    displayName: Deploy PostgresDB to Kubernetes cluster
     inputs:
       action: deploy
       manifests: |

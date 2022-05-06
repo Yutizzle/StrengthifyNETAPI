@@ -1,7 +1,6 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# Deploy to Azure Kubernetes Service
+# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
 - main
@@ -11,13 +10,13 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '7b67eb76-e2d2-4671-b5e2-09353d1c7c71'
-  kubernetesServiceConnection: 'StrengthifyCluster-default'
-  imageRepository: 'strengthify'
+  dockerRegistryServiceConnection: 'cc959d27-4465-443a-b095-c56a8fa3c7fc'
+  imageRepository: 'strengthifynetapi'
   containerRegistry: 'strengthifycontainerregistry.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'strengthifycontainerregistry1025de8a-auth'
+  imagePullSecret: 'strengthifycontainerregistry9386155a-auth'
+  kubernetesServiceConnection: 'StrengthifyCluster-default'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
 
 pool:
   vmImage: windows11
@@ -38,29 +37,41 @@ steps:
         StrengthifyNETAPI.Tests.dll
       searchFolder: '$(System.DefaultWorkingDirectory)\tests\bin\Debug\net6.0'
 
-  # Run Docker Containers and Upload to Registry
+  # Run Build and Push Containers and Upload to Registry
   - task: DockerCompose@0
-    displayName: 'Build Docker Containers'
+    displayName: 'Build Docker Images'
     inputs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
       azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
       dockerComposeFile: '**/docker-compose.yml'
       dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
+      additionalImageTags: $(Build.BuildId)
       action: 'Build services'
   - task: DockerCompose@0
-    displayName: 'Push Docker Containers'
+    displayName: 'Push Docker Images'
     inputs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
       azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
       dockerComposeFile: '**/docker-compose.yml'
       dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
+      additionalImageTags: $(Build.BuildId)
       action: 'Push services'
-
+  - task: DockerCompose@0
+    displayName: 'Lock Docker Images'
+    inputs:
+      containerregistrytype: 'Azure Container Registry'
+      azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
+      azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
+      dockerComposeFile: '**/docker-compose.yml'
+      action: 'Lock services'
+      outputDockerComposeFile: '$(Build.StagingDirectory)/docker-compose.yml'
+      
   - upload: manifests
     artifact: manifests
-    
+  
+  # Create Image Pull Secret
   - task: KubernetesManifest@0
     displayName: Create imagePullSecret
     inputs:
@@ -69,17 +80,16 @@ steps:
       dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
       kubernetesServiceConnection: $(kubernetesServiceConnection)
 
+  # Deploy NET Core App to Kubernetes Cluster
   - task: KubernetesManifest@0
-    displayName: Deploy to Kubernetes cluster
+    displayName: Deploy App to Kubernetes cluster
     inputs:
       action: deploy
       manifests: |
         $(Build.SourcesDirectory)/manifests/deployment.yml
         $(Build.SourcesDirectory)/manifests/service.yml
-        $(Build.SourcesDirectory)/manifests/postgres-deployment.yml
-        $(Build.SourcesDirectory)/manifests/postgres-service.yml
       imagePullSecrets: |
         $(imagePullSecret)
       containers: |
-        $(containerRegistry)/$(imageRepository):$(tag)
+        $(containerRegistry)/$(imageRepository):$(Build.BuildId)
       kubernetesServiceConnection: $(kubernetesServiceConnection)
