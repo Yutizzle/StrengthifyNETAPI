@@ -16,7 +16,7 @@ services:
     depends_on:
       - postgresdb
 
-  postgresdb:
+  postgres-db-lb:
     image: postgres
     environment:
       POSTGRES_USER: postgres

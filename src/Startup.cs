@@ -75,6 +75,7 @@ namespace StrengthifyNETAPI
 
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IProgramsRepository, ProgramsRepository>();
+            services.AddScoped<IIncrementFrequenciesRepository, IncrementFrequenciesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,7 +92,7 @@ namespace StrengthifyNETAPI
                 });
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 

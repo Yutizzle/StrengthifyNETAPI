@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StrengthifyNETAPI.UnitTests;
 
-public class UserController_UnitTests
+public class UsersController_UnitTests
 {
     [Fact]
     public async Task GetUsers_TwoUsers_ReturnsBothUsers()
@@ -39,7 +39,7 @@ public class UserController_UnitTests
         };
         List<UserReadDto> allUsers = new List<UserReadDto> { user1, user2 };
         var userRepositoryMock = new Mock<IUsersRepository>();
-        var controller = new UserController(userRepositoryMock.Object);
+        var controller = new UsersController(userRepositoryMock.Object);
         userRepositoryMock
             .Setup(_ => _.GetAllUsersAsync())
             .ReturnsAsync(allUsers.AsEnumerable())
@@ -71,14 +71,14 @@ public class UserController_UnitTests
             DateOfBirth = DateTime.UtcNow
         };
         var userRepositoryMock = new Mock<IUsersRepository>();
-        var userController = new UserController(userRepositoryMock.Object);
+        var UsersController = new UsersController(userRepositoryMock.Object);
         userRepositoryMock
             .Setup(_ => _.GetUserByIdAsync(1))
             .ReturnsAsync(user)
             .Verifiable();
 
         // Act
-        ActionResult<User> actionResult = await userController.GetUser(1);
+        ActionResult<User> actionResult = await UsersController.GetUser(1);
         OkObjectResult resultObj = actionResult.Result as OkObjectResult;
         User resultValue = resultObj.Value as User;
 
@@ -133,10 +133,10 @@ public class UserController_UnitTests
             .Setup(_ => _.CreateUserAsync(newUserParams, uuid, It.IsAny<DateTime>()))
             .ReturnsAsync(newUser)
             .Verifiable();
-        var userController = new UserController(userRepositoryMock.Object);
+        var UsersController = new UsersController(userRepositoryMock.Object);
 
         // Act
-        ActionResult<UserWriteDto> actionResult = await userController.PostUser(newUserParams);
+        ActionResult<UserWriteDto> actionResult = await UsersController.PostUser(newUserParams);
         CreatedAtActionResult resultObj = actionResult.Result as CreatedAtActionResult;
         UserWriteResultDto resultValue = resultObj.Value as UserWriteResultDto;
 

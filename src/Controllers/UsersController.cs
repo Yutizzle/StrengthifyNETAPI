@@ -13,10 +13,10 @@ namespace StrengthifyNETAPI.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IUsersRepository _UsersRepository;
-        public UserController(IUsersRepository UsersRepository)
+        public UsersController(IUsersRepository UsersRepository)
         {
             _UsersRepository = UsersRepository;
         }
