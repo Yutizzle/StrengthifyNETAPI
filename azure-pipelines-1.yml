@@ -39,24 +39,27 @@ steps:
 
   # Run Docker Containers and Upload to Registry
   - task: DockerCompose@0
-    displayName: 'Build Docker Containers'
+    displayName: 'Build Docker Images'
     inputs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
       azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
       dockerComposeFile: '**/docker-compose.yml'
       dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
+      additionalImageTags: $(Build.BuildId)
       action: 'Build services'
   - task: DockerCompose@0
-    displayName: 'Push Docker Containers'
+    displayName: 'Push Docker Images'
     inputs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
       azureContainerRegistry: '{"loginServer":"strengthifycontainerregistry.azurecr.io", "id" : "/subscriptions/66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4/resourceGroups/strengthify-rg/providers/Microsoft.ContainerRegistry/registries/strengthifycontainerregistry"}'
       dockerComposeFile: '**/docker-compose.yml'
       dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
+      additionalImageTags: $(Build.BuildId)
       action: 'Push services'
   - task: DockerCompose@0
+    displayName: 'Lock Docker Images'
     inputs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Azure subscription 1(66a6a688-1c7f-4f4f-a3dd-cecf7b8f02e4)'
@@ -86,5 +89,5 @@ steps:
       imagePullSecrets: |
         $(imagePullSecret)
       containers: |
-        $(containerRegistry)/$(imageRepository)
+        $(containerRegistry)/$(imageRepository):$(Build.BuildId)
       kubernetesServiceConnection: $(kubernetesServiceConnection)
