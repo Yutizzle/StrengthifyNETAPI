@@ -17,9 +17,18 @@ namespace StrengthifyNETAPI.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Program>> GetAllProgramsAsync()
+        public async Task<IEnumerable<ProgramReadDto>> GetAllProgramsAsync()
         {
-            return await _context.Programs.ToListAsync();
+            List<ProgramReadDto> result = await _context.Programs
+                .Select(x => new ProgramReadDto
+                {
+                    ProgramId = x.ProgramId,
+                    ProgramName = x.ProgramName,
+                    TotalCycleDays = x.TotalCycleDays
+                })
+                .ToListAsync();
+
+            return result.AsEnumerable();
         }
 
         public async Task<Program> GetProgramByIdAsync(int id)

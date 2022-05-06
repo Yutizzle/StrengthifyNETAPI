@@ -22,7 +22,7 @@ namespace StrengthifyNETAPI.Controllers
 
         // GET: api/Programs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Program>>> GetPrograms()
+        public async Task<ActionResult<IEnumerable<ProgramReadDto>>> GetPrograms()
         {
             return Ok(await _programsRepository.GetAllProgramsAsync());
         }

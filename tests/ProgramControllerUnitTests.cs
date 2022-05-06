@@ -21,19 +21,19 @@ public class ProgramController_UnitTests
     public async Task GetPrograms_TwoPrograms_ReturnsBothPrograms()
     {
         // Arrange
-        Program program1 = new Program
+        ProgramReadDto program1 = new ProgramReadDto
         {
             ProgramId = 1,
             ProgramName = "Program1",
             TotalCycleDays = 2,
         };
-        Program program2 = new Program
+        ProgramReadDto program2 = new ProgramReadDto
         {
             ProgramId = 2,
             ProgramName = "Program2",
             TotalCycleDays = 3,
         };
-        List<Program> allPrograms = new List<Program> { program1, program2 };
+        List<ProgramReadDto> allPrograms = new List<ProgramReadDto> { program1, program2 };
         var programsRepositoryMock = new Mock<IProgramsRepository>();
         var userRepositoryMock = new Mock<IUsersRepository>();
         var controller = new ProgramsController(programsRepositoryMock.Object, userRepositoryMock.Object);
@@ -43,9 +43,9 @@ public class ProgramController_UnitTests
             .Verifiable();
 
         // Act   
-        ActionResult<IEnumerable<Program>> actionResult = await controller.GetPrograms();
+        ActionResult<IEnumerable<ProgramReadDto>> actionResult = await controller.GetPrograms();
         OkObjectResult resultObj = actionResult.Result as OkObjectResult;
-        List<Program> resultValue = resultObj.Value as List<Program>;
+        List<ProgramReadDto> resultValue = resultObj.Value as List<ProgramReadDto>;
 
         // Assert
         Assert.IsType<OkObjectResult>(actionResult.Result);
