@@ -8,14 +8,3 @@ spec:
     - port: 5000 
     selector:
         app: strengthify
-
-apiVersion: v1
-kind: Service
-metadata:
-    name: postgresdb
-spec:
-    type: NodePort
-    ports:
-    - port: 5432 
-    selector:
-        app: postgresdb
