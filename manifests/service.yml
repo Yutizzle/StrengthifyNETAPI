@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
+    annotations: 
+        service.beta.kubernetes.io/azure-dns-label-name: strengthify
     name: strengthify
 spec:
     type: LoadBalancer
@@ -8,3 +10,5 @@ spec:
     - port: 5000 
     selector:
         app: strengthify
+
+        
