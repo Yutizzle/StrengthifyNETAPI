@@ -86,5 +86,5 @@ steps:
       imagePullSecrets: |
         $(imagePullSecret)
       containers: |
-        $(containerRegistry)/$(imageRepository):$(tag)
+        $(containerRegistry)/$(imageRepository)
       kubernetesServiceConnection: $(kubernetesServiceConnection)
