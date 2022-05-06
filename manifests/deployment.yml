@@ -17,23 +17,18 @@ spec:
           image: strengthifycontainerregistry.azurecr.io/strengthifynetapi
           ports:
           - containerPort: 5000
-
-apiVersion : db/v1
-kind: Deployment
-metadata:
-  name: postgresdb 
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: postgresdb
-  template:
-    metadata:
-      labels:
-        app: postgresdb 
     spec:
-      containers:
-        - name: postgresdb 
-          image: postgres
-          ports:
-          - containerPort: 5432
+      replicas: 1
+      selector:
+        matchLabels:
+          app: postgresdb
+      template:
+        metadata:
+          labels:
+            app: postgresdb 
+        spec:
+          containers:
+            - name: postgresdb 
+              image: postgres
+              ports:
+              - containerPort: 5432
