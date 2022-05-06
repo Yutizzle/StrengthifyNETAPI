@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
     annotations: 
-        service.beta.kubernetes.io/azure-dns-label-name: strengthify
+        service.beta.kubernetes.io/azure-dns-label-name: strengthifynetapi
     name: strengthify
 spec:
     type: LoadBalancer
