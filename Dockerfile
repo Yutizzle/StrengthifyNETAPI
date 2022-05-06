@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
 WORKDIR /app
 EXPOSE 5000
 
-ENV ASPNETCORE_URLS=http://+:5000;https://+:5001
+ENV ASPNETCORE_URLS=http://+:5000;
 ENV SUPABASE_URL=https://comnwzdkrpnewmjrhowt.supabase.co
 ENV SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNTYzMDc3MSwiZXhwIjoxOTUxMjA2NzcxfQ.4Ljuc-U6g6EH-O2olSHMlNF5hd7FrTubBAGhLMrjH7w
 ENV SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjM1NjMwNzcxLCJleHAiOjE5NTEyMDY3NzF9.B-EtQcm9CqFOrmNUFfLqOmXJfmh4F0ER91-kujhXsjY
