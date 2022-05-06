@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'cc959d27-4465-443a-b095-c56a8fa3c7fc'
-  imageRepository: 'strengthify'
+  imageRepository: 'strengthifynetapi'
   containerRegistry: 'strengthifycontainerregistry.azurecr.io'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'strengthifycontainerregistry9386155a-auth'
