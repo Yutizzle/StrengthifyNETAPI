@@ -80,7 +80,7 @@ steps:
       kubernetesServiceConnection: $(kubernetesServiceConnection)
 
   - task: KubernetesManifest@0
-    displayName: Deploy to Kubernetes cluster
+    displayName: Deploy App to Kubernetes cluster
     inputs:
       action: deploy
       manifests: |
@@ -90,4 +90,13 @@ steps:
         $(imagePullSecret)
       containers: |
         $(containerRegistry)/$(imageRepository):$(Build.BuildId)
+      kubernetesServiceConnection: $(kubernetesServiceConnection)
+
+  - task: KubernetesManifest@0
+    displayName: Deploy DB to Kubernetes cluster
+    inputs:
+      action: deploy
+      manifests: |
+        $(Build.SourcesDirectory)/manifests/postgres-deployment.yml
+        $(Build.SourcesDirectory)/manifests/postgres-service.yml
       kubernetesServiceConnection: $(kubernetesServiceConnection)
