@@ -1,7 +1,19 @@
-apiVersion : apps/v1
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-postgre
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgresdb 
+  name: postgresdb
 spec:
   replicas: 1
   selector:
@@ -10,15 +22,25 @@ spec:
   template:
     metadata:
       labels:
-        app: postgresdb 
+        app: postgresdb
     spec:
       containers:
-        - name: postgresdb 
-          image: postgres
-          ports:
-            - 5432:5432
-          environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-          volumes:
-            - local_postgres_data:/var/lib/postgresql/data
+      - name: postgresdb
+        image: postgres:latest
+        ports:
+        - containerPort: 5432
+        env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: PGDATA
+              value: /var/lib/postgresql/backup
+        volumeMounts:
+          - name: database
+            mountPath: /var/lib/postgresql
+            subPath: backup
+      volumes:
+        - name: database
+          persistentVolumeClaim:
+            claimName: pvc-postgre
