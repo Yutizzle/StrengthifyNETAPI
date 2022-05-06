@@ -76,6 +76,8 @@ steps:
       manifests: |
         $(Build.SourcesDirectory)/manifests/deployment.yml
         $(Build.SourcesDirectory)/manifests/service.yml
+        $(Build.SourcesDirectory)/manifests/postgres-deployment.yml
+        $(Build.SourcesDirectory)/manifests/postgres-service.yml
       imagePullSecrets: |
         $(imagePullSecret)
       containers: |
