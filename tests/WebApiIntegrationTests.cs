@@ -1,20 +1,12 @@
 using Xunit;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Testing;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
 using System.Net;
 using System.Net.Http;
-using StrengthifyNETAPI.Models;
 using StrengthifyNETAPI.Dto;
 using System.Text.Json;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication;
 using System.Net.Http.Headers;
-using System.Security.Claims;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace StrengthifyNETAPI.Tests
