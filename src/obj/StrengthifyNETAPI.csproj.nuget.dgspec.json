@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj": {}
+    "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj": {
+    "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj",
         "projectName": "StrengthifyNETAPI",
-        "projectPath": "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj",
+        "projectPath": "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj",
         "packagesPath": "C:\\Users\\Yuta\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\obj\\",
+        "outputPath": "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yuta\\AppData\\Roaming\\NuGet\\NuGet.Config",

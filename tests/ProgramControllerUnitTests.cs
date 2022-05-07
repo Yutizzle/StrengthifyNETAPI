@@ -13,7 +13,7 @@ using StrengthifyNETAPI.Repositories;
 using StrengthifyNETAPI.Dto;
 using Microsoft.AspNetCore.Mvc;
 
-namespace StrengthifyNETAPI.UnitTests;
+namespace StrengthifyNETAPI.Tests;
 
 public class ProgramController_UnitTests
 {

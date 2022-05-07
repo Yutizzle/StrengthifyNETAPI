@@ -11,30 +11,37 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using StrengthifyNETAPI.Repositories;
+using Microsoft.Extensions.Logging.Console;
 
 namespace StrengthifyNETAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
+        private IWebHostEnvironment _env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(jsonOptions =>
+                {
+                    jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
+                });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StrengthifyNETAPI", Version = "v1" });
             });
 
             // database connection service
-            Console.WriteLine(String.Format("Adding Db Context with connection string: {0}", Configuration.GetConnectionString("StrengthifyContext")));
             services.AddDbContext<StrengthifyContext>(options =>
                 options
                 .UseNpgsql(Configuration.GetConnectionString("StrengthifyContext"))
