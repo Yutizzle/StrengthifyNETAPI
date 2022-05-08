@@ -9,7 +9,7 @@ resources:
 - repo: self
 
 variables:
-  - group: strengthify-secrets
+  - group: Strengthify Secrets
   - name: dockerRegistryServiceConnection
     value: 'cc959d27-4465-443a-b095-c56a8fa3c7fc'
   - name: imageRepository
