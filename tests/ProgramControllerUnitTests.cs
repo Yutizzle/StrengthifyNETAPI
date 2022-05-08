@@ -57,7 +57,7 @@ public class ProgramController_UnitTests
     public async Task GetProgram_SingleId_ReturnsSingleProgramWithId()
     {
         // Arrange
-        Program program = new Program
+        ProgramReadDto program = new ProgramReadDto
         {
             ProgramId = 1,
             ProgramName = "Program1",
@@ -72,9 +72,9 @@ public class ProgramController_UnitTests
             .Verifiable();
 
         // Act
-        ActionResult<Program> actionResult = await programController.GetProgram(1);
+        ActionResult<ProgramReadDto> actionResult = await programController.GetProgram(1);
         OkObjectResult resultObj = actionResult.Result as OkObjectResult;
-        Program resultValue = resultObj.Value as Program;
+        ProgramReadDto resultValue = resultObj.Value as ProgramReadDto;
 
         // Assert
         Assert.IsType<OkObjectResult>(actionResult.Result);

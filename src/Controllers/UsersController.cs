@@ -16,23 +16,43 @@ namespace StrengthifyNETAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUsersRepository _UsersRepository;
-        public UsersController(IUsersRepository UsersRepository)
+        private readonly IProgramsRepository _ProgramsRepository;
+        public UsersController(IUsersRepository UsersRepository, IProgramsRepository ProgramsRepository)
         {
             _UsersRepository = UsersRepository;
+            _ProgramsRepository = ProgramsRepository;
         }
 
-        // GET: api/User
+        // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserReadDto>>> GetUsers()
         {
             return Ok(await _UsersRepository.GetAllUsersAsync());
         }
 
-        // GET: api/User/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             User user = await _UsersRepository.GetUserByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        // GET: api/Users/{id}/Program
+        [HttpGet("{Uuid}/CurrentProgram")]
+        public async Task<ActionResult<User>> GetUserCurrentProgram(Guid Uuid)
+        {
+            User user = await _UsersRepository.GetUserByUuidAsync(Uuid);
+            int programId = user.ProgramId ?? 0;
+            ProgramReadDto program = new ProgramReadDto();
+            if (programId > 0)
+                program = await _ProgramsRepository.GetProgramByIdAsync(programId);
 
             if (user == null)
             {

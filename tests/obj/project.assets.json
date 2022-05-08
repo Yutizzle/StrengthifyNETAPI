@@ -12457,11 +12457,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\tests\\StrengthifyNETAPI.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\tests\\StrengthifyNETAPI.Tests.csproj",
       "projectName": "StrengthifyNETAPI.Tests",
-      "projectPath": "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\tests\\StrengthifyNETAPI.Tests.csproj",
+      "projectPath": "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\tests\\StrengthifyNETAPI.Tests.csproj",
       "packagesPath": "C:\\Users\\Yuta\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\tests\\obj\\",
+      "outputPath": "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Yuta\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -12478,8 +12478,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj": {
-              "projectPath": "c:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj"
+            "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj": {
+              "projectPath": "C:\\Users\\Yuta\\Projects\\StrengthifyNETAPI\\src\\StrengthifyNETAPI.csproj"
             }
           }
         }

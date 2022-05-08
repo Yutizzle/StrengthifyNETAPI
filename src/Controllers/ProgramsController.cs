@@ -29,9 +29,9 @@ namespace StrengthifyNETAPI.Controllers
 
         // GET: api/Programs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Program>> GetProgram(int id)
+        public async Task<ActionResult<ProgramReadDto>> GetProgram(int id)
         {
-            Program program = await _programsRepository.GetProgramByIdAsync(id);
+            ProgramReadDto program = await _programsRepository.GetProgramByIdAsync(id);
 
             if (program == null)
             {

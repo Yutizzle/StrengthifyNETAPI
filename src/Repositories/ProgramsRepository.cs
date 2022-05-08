@@ -31,9 +31,16 @@ namespace StrengthifyNETAPI.Repositories
             return result.AsEnumerable();
         }
 
-        public async Task<Program> GetProgramByIdAsync(int id)
+        public async Task<ProgramReadDto> GetProgramByIdAsync(int id)
         {
-            return await _context.Programs.FindAsync(id);
+            Program result = await _context.Programs.FirstOrDefaultAsync(x => x.ProgramId == id);
+
+            return new ProgramReadDto
+            {
+                ProgramId = result.ProgramId,
+                ProgramName = result.ProgramName,
+                TotalCycleDays = result.TotalCycleDays
+            };
         }
 
         public async Task<Program> GetProgramByNameAsync(string programName)

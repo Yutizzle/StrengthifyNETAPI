@@ -39,7 +39,8 @@ public class UsersController_UnitTests
         };
         List<UserReadDto> allUsers = new List<UserReadDto> { user1, user2 };
         var userRepositoryMock = new Mock<IUsersRepository>();
-        var controller = new UsersController(userRepositoryMock.Object);
+        var programsRepositoryMock = new Mock<IProgramsRepository>();
+        var controller = new UsersController(userRepositoryMock.Object, programsRepositoryMock.Object);
         userRepositoryMock
             .Setup(_ => _.GetAllUsersAsync())
             .ReturnsAsync(allUsers.AsEnumerable())
@@ -71,7 +72,8 @@ public class UsersController_UnitTests
             DateOfBirth = DateTime.UtcNow
         };
         var userRepositoryMock = new Mock<IUsersRepository>();
-        var UsersController = new UsersController(userRepositoryMock.Object);
+        var programsRepositoryMock = new Mock<IProgramsRepository>();
+        var UsersController = new UsersController(userRepositoryMock.Object, programsRepositoryMock.Object);
         userRepositoryMock
             .Setup(_ => _.GetUserByIdAsync(1))
             .ReturnsAsync(user)
@@ -125,6 +127,7 @@ public class UsersController_UnitTests
                 refresh_token = refreshToken
             });
         var userRepositoryMock = new Mock<IUsersRepository>();
+        var programsRepositoryMock = new Mock<IProgramsRepository>();
         userRepositoryMock
             .Setup(_ => _.CreateSupabaseUserAsync(newUserParams.Email, newUserParams.Password))
             .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(supabaseMockResponse, System.Text.Encoding.UTF8, "application/json") })
@@ -133,7 +136,7 @@ public class UsersController_UnitTests
             .Setup(_ => _.CreateUserAsync(newUserParams, uuid, It.IsAny<DateTime>()))
             .ReturnsAsync(newUser)
             .Verifiable();
-        var UsersController = new UsersController(userRepositoryMock.Object);
+        var UsersController = new UsersController(userRepositoryMock.Object, programsRepositoryMock.Object);
 
         // Act
         ActionResult<UserWriteDto> actionResult = await UsersController.PostUser(newUserParams);
