@@ -1,3 +1,4 @@
 # vscode launch configuration
 .vscode
 environment_vars
+docker-compose.debug.yml

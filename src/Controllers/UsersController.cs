@@ -45,9 +45,9 @@ namespace StrengthifyNETAPI.Controllers
         }
 
         // GET: api/Users/CurrentProgram?Uuid={Uuid}
-        [Route("api/[controller]/CurrentProgram")]
+        [Route("CurrentProgram")]
         [HttpGet]
-        public async Task<ActionResult<User>> GetUserCurrentProgram(Guid Uuid)
+        public async Task<ActionResult<UserReadDto>> GetUserCurrentProgram(Guid Uuid)
         {
             User user = await _UsersRepository.GetUserByUuidAsync(Uuid);
             int programId = user.ProgramId ?? 0;
@@ -60,7 +60,7 @@ namespace StrengthifyNETAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(program);
         }
 
         // POST: api/User
