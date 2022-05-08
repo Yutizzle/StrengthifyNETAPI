@@ -44,7 +44,7 @@ namespace StrengthifyNETAPI.Controllers
             return Ok(user);
         }
 
-        // GET: api/Users/{id}/Program
+        // GET: api/Users/Program?Uuid={Uuid}
         [HttpGet("/CurrentProgram")]
         public async Task<ActionResult<User>> GetUserCurrentProgram(Guid Uuid)
         {
