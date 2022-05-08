@@ -45,7 +45,7 @@ namespace StrengthifyNETAPI.Controllers
         }
 
         // GET: api/Users/{id}/Program
-        [HttpGet("{Uuid}/CurrentProgram")]
+        [HttpGet("/CurrentProgram")]
         public async Task<ActionResult<User>> GetUserCurrentProgram(Guid Uuid)
         {
             User user = await _UsersRepository.GetUserByUuidAsync(Uuid);
