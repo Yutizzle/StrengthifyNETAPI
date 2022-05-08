@@ -9,14 +9,33 @@ resources:
 - repo: self
 
 variables:
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'cc959d27-4465-443a-b095-c56a8fa3c7fc'
-  imageRepository: 'strengthifynetapi'
-  containerRegistry: 'strengthifycontainerregistry.azurecr.io'
-  tag: '$(Build.BuildId)'
-  imagePullSecret: 'strengthifycontainerregistry9386155a-auth'
-  kubernetesServiceConnection: 'StrengthifyCluster-default'
-  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  - group: strengthify-secrets
+  - name: dockerRegistryServiceConnection
+    value: 'cc959d27-4465-443a-b095-c56a8fa3c7fc'
+  - name: imageRepository
+    value: 'strengthifynetapi'
+  - name: containerRegistry
+    value: 'strengthifycontainerregistry.azurecr.io'
+  - name: tag
+    value: '$(Build.BuildId)'
+  - name: imagePullSecret
+    value: 'strengthifycontainerregistry9386155a-auth'
+  - name: kubernetesServiceConnection
+    value: 'StrengthifyCluster-default'
+  - name: dockerfilePath
+    value: '$(Build.SourcesDirectory)/Dockerfile'
+  - name: 'stringData.POSTGRES_USER'
+    value: '$(POSTGRES-USER)'
+  - name: 'stringData.POSTGRES_PASSWORD'
+    value: '$(POSTGRES-PASSWORD)'
+  - name: 'stringData.SUPABASE_URL'
+    value: '$(SUPABASE-URL)'
+  - name: 'stringData.SUPABASE_KEY'
+    value: '$(SUPABASE-KEY)'
+  - name: 'stringData.SUPABASE_SERVICE_KEY'
+    value: '$(SUPABASE-SERVICE-KEY)'
+  - name: 'stringData.JWT_SECRET'
+    value: '$(JWT-SECRET)'
 
 pool:
   vmImage: windows11
@@ -79,6 +98,12 @@ steps:
       secretName: $(imagePullSecret)
       dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
       kubernetesServiceConnection: $(kubernetesServiceConnection)
+  # Update environment secrets
+  - task: FileTransform@1
+    inputs:
+      folderPath: '$(System.DefaultWorkingDirectory)/manifests'
+      fileType: 'json'
+      targetFiles: 'secrets.json'
 
   # Deploy NET Core App to Kubernetes Cluster
   - task: KubernetesManifest@0
@@ -88,6 +113,7 @@ steps:
       manifests: |
         $(Build.SourcesDirectory)/manifests/deployment.yml
         $(Build.SourcesDirectory)/manifests/service.yml
+        $(Build.SourcesDirectory)/manifests/secrets.json
       imagePullSecrets: |
         $(imagePullSecret)
       containers: |
@@ -102,4 +128,5 @@ steps:
       manifests: |
         $(Build.SourcesDirectory)/manifests/postgres-deployment.yml
         $(Build.SourcesDirectory)/manifests/postgres-service.yml
+        $(Build.SourcesDirectory)/manifests/secrets.json
       kubernetesServiceConnection: $(kubernetesServiceConnection)
