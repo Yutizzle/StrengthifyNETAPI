@@ -31,7 +31,7 @@ namespace StrengthifyNETAPI.Tests
             // Act
             var response = await _httpClient.GetAsync("/api/Users");
             var responseContent = await response.Content.ReadAsStreamAsync();
-            List<UserReadDto> responseList = await JsonSerializer.DeserializeAsync<List<UserReadDto>>(responseContent);
+            List<UserReadDto> responseList = await JsonSerializer.DeserializeAsync<List<UserReadDto>>(responseContent, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, (HttpStatusCode)response.StatusCode);

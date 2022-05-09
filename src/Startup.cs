@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json;
 using StrengthifyNETAPI.Repositories;
-using Microsoft.Extensions.Logging.Console;
 
 namespace StrengthifyNETAPI
 {
@@ -33,7 +33,7 @@ namespace StrengthifyNETAPI
             services.AddControllers()
                 .AddJsonOptions(jsonOptions =>
                 {
-                    jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
+                    jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 });
 
             services.AddSwaggerGen(c =>
