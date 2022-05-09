@@ -103,7 +103,9 @@ namespace StrengthifyNETAPI.Repositories
                 {
                     Workout = workouts[workoutIndex],
                     SequenceNum = exercise.SequenceNum,
-                    Exercise = exercise.Exercise
+                    Exercise = exercise.Exercise,
+                    CreatedBy = user,
+                    UpdatedBy = user
                 };
 
                 _context.WorkoutExercises.Add(newWorkoutExercise);
@@ -129,7 +131,9 @@ namespace StrengthifyNETAPI.Repositories
                     WeightIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.WeightIncrementFrequencyId),
                     RepsIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.RepsIncrementFrequencyId),
                     SetDurationIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.SetDurationIncrementFrequencyId),
-                    WorkoutExercise = workoutExercises[exerciseIndex]
+                    WorkoutExercise = workoutExercises[exerciseIndex],
+                    CreatedBy = user,
+                    UpdatedBy = user
                 };
 
                 _context.WorkoutExerciseDetails.Add(newWorkoutExerciseDetail);
