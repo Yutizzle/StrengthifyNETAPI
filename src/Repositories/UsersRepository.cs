@@ -51,11 +51,12 @@ namespace StrengthifyNETAPI.Repositories
             return await _context.Users.SingleOrDefaultAsync(x => x.Uuid == uuid);
         }
 
-        public async Task<int> PutUser(int id, User user)
+        public async Task<User> PutUser(User user)
         {
             _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return id;
+
+            return user;
         }
 
         public async Task<HttpResponseMessage> CreateSupabaseUserAsync(string email, string password)

@@ -66,6 +66,29 @@ namespace StrengthifyNETAPI.Controllers
             return Ok(program);
         }
 
+        // PUT: api/Users/CurrentProgram?Uuid={Uuid}&ProgramId={ProgramId}
+        [Route("CurrentProgram")]
+        [HttpPut]
+        public async Task<ActionResult<int>> PutUserCurrentProgram(Guid Uuid, int ProgramId)
+        {
+            User user = await _UsersRepository.GetUserByUuidAsync(Uuid);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            ProgramReadDto program = await _ProgramsRepository.GetProgramByIdAsync(ProgramId);
+            if (program == null)
+            {
+                return NotFound();
+            }
+
+            user.ProgramId = program.ProgramId;
+            user = await _UsersRepository.PutUser(user);
+
+            return Ok(user.ProgramId);
+        }
+
         // POST: api/User
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

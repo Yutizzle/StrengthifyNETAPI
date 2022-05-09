@@ -18,7 +18,7 @@ namespace StrengthifyNETAPI.Repositories
         Task<IEnumerable<UserReadDto>> GetAllUsersAsync();
         Task<User> GetUserByIdAsync(int id);
         Task<User> GetUserByUuidAsync(Guid uuid);
-        Task<int> PutUser(int id, User user);
+        Task<User> PutUser(User user);
         Task<HttpResponseMessage> CreateSupabaseUserAsync(string email, string password);
         Task<User> CreateUserAsync(UserWriteDto user, Guid Uuid, DateTime birthDate);
     }
