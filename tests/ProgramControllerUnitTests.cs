@@ -111,13 +111,13 @@ public class ProgramController_UnitTests
             Exercises = new ExerciseDto[] {
                 new ExerciseDto {
                     Exercise= "test exercise 1",
-                    WorkoutName = "test workout 2",
+                    WorkoutKey = "test workout 2",
                     SequenceNum = 0
                 }
             },
             Sets = new SetsDto[] {
                 new SetsDto {
-                    Exercise = "test exercise 1",
+                    ExerciseKey = "test exercise 1",
                     Set = 1,
                     Reps = 8,
                     Weight = 100,

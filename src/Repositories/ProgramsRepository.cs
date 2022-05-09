@@ -98,9 +98,10 @@ namespace StrengthifyNETAPI.Repositories
             List<WorkoutExercise> workoutExercises = new List<WorkoutExercise>();
             foreach (var exercise in newProgram.Exercises)
             {
+                int workoutIndex = newProgram.Workouts.ToList().FindIndex(x => x.WorkoutKey == exercise.WorkoutKey);
                 var newWorkoutExercise = new WorkoutExercise
                 {
-                    Workout = workouts.Single(c => c.WorkoutName == exercise.WorkoutName),
+                    Workout = workouts[workoutIndex],
                     SequenceNum = exercise.SequenceNum,
                     Exercise = exercise.Exercise
                 };
@@ -114,7 +115,7 @@ namespace StrengthifyNETAPI.Repositories
             List<IncrementFrequency> incrementFrequencies = _context.IncrementFrequencies.ToList();
             foreach (var set in newProgram.Sets)
             {
-
+                int exerciseIndex = newProgram.Exercises.ToList().FindIndex(x => x.ExerciseKey == set.ExerciseKey);
                 var newWorkoutExerciseDetail = new WorkoutExerciseDetail
                 {
                     Set = set.Set,
@@ -128,7 +129,7 @@ namespace StrengthifyNETAPI.Repositories
                     WeightIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.WeightIncrementFrequencyId),
                     RepsIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.RepsIncrementFrequencyId),
                     SetDurationIncrementFrequency = incrementFrequencies.FirstOrDefault(x => x.IncrementFrequencyId == set.SetDurationIncrementFrequencyId),
-                    WorkoutExercise = workoutExercises.FirstOrDefault(x => x.Exercise == set.Exercise)
+                    WorkoutExercise = workoutExercises[exerciseIndex]
                 };
 
                 _context.WorkoutExerciseDetails.Add(newWorkoutExerciseDetail);

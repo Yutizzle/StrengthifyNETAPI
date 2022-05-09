@@ -2,8 +2,9 @@ namespace StrengthifyNETAPI.Dto
 {
     public class ExerciseDto
     {
+        public string ExerciseKey { get; set; }
         public string Exercise { get; set; }
-        public string WorkoutName { get; set; }
+        public string WorkoutKey { get; set; }
         public int SequenceNum { get; set; }
 
     }
