@@ -69,15 +69,15 @@ namespace StrengthifyNETAPI.Controllers
         // PUT: api/Users/CurrentProgram?Uuid={Uuid}&ProgramId={ProgramId}
         [Route("CurrentProgram")]
         [HttpPut]
-        public async Task<ActionResult<int>> PutUserCurrentProgram(Guid Uuid, int ProgramId)
+        public async Task<ActionResult<int>> PutUserCurrentProgram([FromBody] UserProgramWriteDto UserProgram)
         {
-            User user = await _UsersRepository.GetUserByUuidAsync(Uuid);
+            User user = await _UsersRepository.GetUserByUuidAsync(UserProgram.Uuid);
             if (user == null)
             {
                 return NotFound();
             }
 
-            ProgramReadDto program = await _ProgramsRepository.GetProgramByIdAsync(ProgramId);
+            ProgramReadDto program = await _ProgramsRepository.GetProgramByIdAsync(UserProgram.ProgramId);
             if (program == null)
             {
                 return NotFound();
