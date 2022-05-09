@@ -19,6 +19,7 @@ namespace StrengthifyNETAPI.Models
         public Program Program { get; set; }
         public int? WorkoutId { get; set; }
         public Workout Workout { get; set; }
+        public int? CurrentProgramCycle { get; set; }
         [InverseProperty("CreatedBy")]
         public ICollection<IncrementFrequency> IncrementFrequencyCreated { get; set; }
         [InverseProperty("UpdatedBy")]
