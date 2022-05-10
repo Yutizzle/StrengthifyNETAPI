@@ -1,6 +1,6 @@
 namespace StrengthifyNETAPI.Dto
 {
-    public class SetsDto
+    public class SetDto
     {
         public string ExerciseKey { get; init; }
         public int Set { get; set; }

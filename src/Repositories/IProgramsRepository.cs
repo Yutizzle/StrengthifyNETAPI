@@ -10,9 +10,10 @@ namespace StrengthifyNETAPI.Repositories
 {
     public interface IProgramsRepository
     {
-        Task<IEnumerable<ProgramReadDto>> GetAllProgramsAsync();
-        Task<ProgramReadDto> GetProgramByIdAsync(int id);
-        Task<Program> GetProgramByNameAsync(string programName);
+        Task<IEnumerable<ProgramReadLiteDto>> GetAllProgramsAsync();
+        Task<ProgramReadLiteDto> GetProgramByIdAsync(int id);
+        Task<Program> GetProgramByNameAsync(string name);
+        Task<ProgramReadFullDto> GetFullProgramByIdAsync(int id);
         Task<ActionResult<int>> PutProgramAsync(int id, Program program);
         Task<int> CreateProgramAsync(ProgramWriteDto newProgram, User user);
         void DeleteProgramAsync(int id);

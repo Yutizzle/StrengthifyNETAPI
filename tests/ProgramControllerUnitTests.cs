@@ -19,19 +19,19 @@ public class ProgramController_UnitTests
     public async Task GetPrograms_TwoPrograms_ReturnsBothPrograms()
     {
         // Arrange
-        ProgramReadDto program1 = new ProgramReadDto
+        ProgramReadLiteDto program1 = new ProgramReadLiteDto
         {
             ProgramId = 1,
             ProgramName = "Program1",
             TotalCycleDays = 2,
         };
-        ProgramReadDto program2 = new ProgramReadDto
+        ProgramReadLiteDto program2 = new ProgramReadLiteDto
         {
             ProgramId = 2,
             ProgramName = "Program2",
             TotalCycleDays = 3,
         };
-        List<ProgramReadDto> allPrograms = new List<ProgramReadDto> { program1, program2 };
+        List<ProgramReadLiteDto> allPrograms = new List<ProgramReadLiteDto> { program1, program2 };
         var programsRepositoryMock = new Mock<IProgramsRepository>();
         var userRepositoryMock = new Mock<IUsersRepository>();
         var controller = new ProgramsController(programsRepositoryMock.Object, userRepositoryMock.Object);
@@ -41,9 +41,9 @@ public class ProgramController_UnitTests
             .Verifiable();
 
         // Act   
-        ActionResult<IEnumerable<ProgramReadDto>> actionResult = await controller.GetPrograms();
+        ActionResult<IEnumerable<ProgramReadLiteDto>> actionResult = await controller.GetPrograms();
         OkObjectResult resultObj = actionResult.Result as OkObjectResult;
-        List<ProgramReadDto> resultValue = resultObj.Value as List<ProgramReadDto>;
+        List<ProgramReadLiteDto> resultValue = resultObj.Value as List<ProgramReadLiteDto>;
 
         // Assert
         Assert.IsType<OkObjectResult>(actionResult.Result);
@@ -57,7 +57,7 @@ public class ProgramController_UnitTests
     public async Task GetProgram_SingleId_ReturnsSingleProgramWithId()
     {
         // Arrange
-        ProgramReadDto program = new ProgramReadDto
+        ProgramReadFullDto program = new ProgramReadFullDto
         {
             ProgramId = 1,
             ProgramName = "Program1",
@@ -67,14 +67,14 @@ public class ProgramController_UnitTests
         var userRepositoryMock = new Mock<IUsersRepository>();
         var programController = new ProgramsController(programsRepositoryMock.Object, userRepositoryMock.Object);
         programsRepositoryMock
-            .Setup(_ => _.GetProgramByIdAsync(1))
+            .Setup(_ => _.GetFullProgramByIdAsync(1))
             .ReturnsAsync(program)
             .Verifiable();
 
         // Act
-        ActionResult<ProgramReadDto> actionResult = await programController.GetProgram(1);
+        ActionResult<ProgramReadFullDto> actionResult = await programController.GetProgram(1);
         OkObjectResult resultObj = actionResult.Result as OkObjectResult;
-        ProgramReadDto resultValue = resultObj.Value as ProgramReadDto;
+        ProgramReadFullDto resultValue = resultObj.Value as ProgramReadFullDto;
 
         // Assert
         Assert.IsType<OkObjectResult>(actionResult.Result);
@@ -115,8 +115,8 @@ public class ProgramController_UnitTests
                     SequenceNum = 0
                 }
             },
-            Sets = new SetsDto[] {
-                new SetsDto {
+            Sets = new SetDto[] {
+                new SetDto {
                     ExerciseKey = "test exercise 1",
                     Set = 1,
                     Reps = 8,

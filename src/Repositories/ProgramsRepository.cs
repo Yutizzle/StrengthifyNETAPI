@@ -17,10 +17,10 @@ namespace StrengthifyNETAPI.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<ProgramReadDto>> GetAllProgramsAsync()
+        public async Task<IEnumerable<ProgramReadLiteDto>> GetAllProgramsAsync()
         {
-            List<ProgramReadDto> result = await _context.Programs
-                .Select(x => new ProgramReadDto
+            List<ProgramReadLiteDto> result = await _context.Programs
+                .Select(x => new ProgramReadLiteDto
                 {
                     ProgramId = x.ProgramId,
                     ProgramName = x.ProgramName,
@@ -31,11 +31,12 @@ namespace StrengthifyNETAPI.Repositories
             return result.AsEnumerable();
         }
 
-        public async Task<ProgramReadDto> GetProgramByIdAsync(int id)
+        public async Task<ProgramReadLiteDto> GetProgramByIdAsync(int id)
         {
-            Program result = await _context.Programs.FirstOrDefaultAsync(x => x.ProgramId == id);
+            Program result = await _context.Programs
+                .FirstOrDefaultAsync(x => x.ProgramId == id);
 
-            return new ProgramReadDto
+            return new ProgramReadLiteDto
             {
                 ProgramId = result.ProgramId,
                 ProgramName = result.ProgramName,
@@ -43,9 +44,68 @@ namespace StrengthifyNETAPI.Repositories
             };
         }
 
-        public async Task<Program> GetProgramByNameAsync(string programName)
+        public async Task<Program> GetProgramByNameAsync(string name)
         {
-            return await _context.Programs.SingleOrDefaultAsync(x => x.ProgramName == programName);
+            return await _context.Programs.FirstOrDefaultAsync(x => x.ProgramName == name);
+
+        }
+
+        public async Task<ProgramReadFullDto> GetFullProgramByIdAsync(int id)
+        {
+            Program program = await _context.Programs.FirstOrDefaultAsync(x => x.ProgramId == id);
+
+            List<Workout> workouts = await _context.ProgramDetails
+                .Where(x => x.ProgramId == id)
+                .OrderBy(x => x.SequenceNum)
+                .Select(x => x.Workout)
+                .ToListAsync();
+
+            List<WorkoutExercise> exercises = await _context.WorkoutExercises
+                .Where(x => workouts.Contains(x.Workout))
+                .ToListAsync();
+
+            List<WorkoutExerciseDetail> sets = await _context.WorkoutExerciseDetails
+                .Where(x => exercises.Contains(x.WorkoutExercise))
+                .ToListAsync();
+
+            return new ProgramReadFullDto
+            {
+                ProgramId = program.ProgramId,
+                ProgramName = program.ProgramName,
+                TotalCycleDays = program.TotalCycleDays,
+                Workouts = workouts.Select((x, i) => new WorkoutDto
+                {
+                    WorkoutKey = x.WorkoutId.ToString(),
+                    WorkoutName = x.WorkoutName,
+                    SequenceNum = i,
+                    CycleDayNum = i + 1
+                }).ToArray(),
+                Exercises = exercises.Select(x => new ExerciseDto
+                {
+                    ExerciseKey = x.WorkoutExerciseId.ToString(),
+                    Exercise = x.Exercise,
+                    WorkoutKey = x.WorkoutId.ToString(),
+                    SequenceNum = x.SequenceNum
+                }).ToArray(),
+                Sets = sets.Select(x => new SetDto
+                {
+                    ExerciseKey = x.WorkoutExerciseId.ToString(),
+                    Set = x.Set,
+                    Reps = x.Reps,
+                    Weight = x.Weight,
+                    SetDuration = x.SetDuration,
+                    SetRestDuration = x.SetRestDuration,
+                    MaxReps = x.MaxReps,
+                    MaxWeight = x.MaxWeight,
+                    MaxSetDuration = x.MaxSetDuration,
+                    RepsIncrementFrequencyId = x.RepsIncrementFrequencyId ?? 0,
+                    WeightIncrementFrequencyId = x.WeightIncrementFrequencyId ?? 0,
+                    SetDurationIncrementFrequencyId = x.SetDurationIncrementFrequencyId ?? 0,
+                    RepsIncrementAmount = x.RepsIncrementAmount,
+                    WeightIncrementAmount = x.WeightIncrementAmount,
+                    SetDurationIncrementAmount = x.SetDurationIncrementAmount
+                }).ToArray()
+            };
         }
 
         public async Task<ActionResult<int>> PutProgramAsync(int id, Program program)

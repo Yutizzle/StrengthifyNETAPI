@@ -47,7 +47,7 @@ namespace StrengthifyNETAPI.Controllers
         // GET: api/Users/CurrentProgram?Uuid={Uuid}
         [Route("CurrentProgram")]
         [HttpGet]
-        public async Task<ActionResult<ProgramReadDto>> GetUserCurrentProgram(Guid Uuid)
+        public async Task<ActionResult<ProgramReadLiteDto>> GetUserCurrentProgram(Guid Uuid)
         {
             User user = await _UsersRepository.GetUserByUuidAsync(Uuid);
             if (user == null)
@@ -55,7 +55,7 @@ namespace StrengthifyNETAPI.Controllers
                 return NotFound();
             }
 
-            ProgramReadDto program = new ProgramReadDto();
+            ProgramReadLiteDto program = new ProgramReadLiteDto();
             int programId = user.ProgramId ?? 0;
             if (programId > 0)
             {
@@ -77,7 +77,7 @@ namespace StrengthifyNETAPI.Controllers
                 return NotFound();
             }
 
-            ProgramReadDto program = await _ProgramsRepository.GetProgramByIdAsync(UserProgram.ProgramId);
+            ProgramReadLiteDto program = await _ProgramsRepository.GetProgramByIdAsync(UserProgram.ProgramId);
             if (program == null)
             {
                 return NotFound();
