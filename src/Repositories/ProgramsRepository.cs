@@ -89,6 +89,7 @@ namespace StrengthifyNETAPI.Repositories
                 }).ToArray(),
                 Sets = sets.Select(x => new SetDto
                 {
+                    WorkoutKey = x.WorkoutExercise.WorkoutId.ToString(),
                     ExerciseKey = x.WorkoutExerciseId.ToString(),
                     Set = x.Set,
                     Reps = x.Reps,

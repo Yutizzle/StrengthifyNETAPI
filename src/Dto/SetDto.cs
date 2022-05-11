@@ -2,21 +2,22 @@ namespace StrengthifyNETAPI.Dto
 {
     public class SetDto
     {
-        public string ExerciseKey { get; init; }
+        public string WorkoutKey { get; set; }
+        public string ExerciseKey { get; set; }
         public int Set { get; set; }
-        public int Reps { get; init; }
-        public int Weight { get; init; }
-        public int SetDuration { get; init; }
-        public int SetRestDuration { get; init; }
-        public int MaxReps { get; init; }
-        public int MaxWeight { get; init; }
-        public int MaxSetDuration { get; init; }
-        public int RepsIncrementFrequencyId { get; init; }
-        public int WeightIncrementFrequencyId { get; init; }
-        public int SetDurationIncrementFrequencyId { get; init; }
-        public int RepsIncrementAmount { get; init; }
-        public int WeightIncrementAmount { get; init; }
-        public int SetDurationIncrementAmount { get; init; }
+        public int Reps { get; set; }
+        public int Weight { get; set; }
+        public int SetDuration { get; set; }
+        public int SetRestDuration { get; set; }
+        public int MaxReps { get; set; }
+        public int MaxWeight { get; set; }
+        public int MaxSetDuration { get; set; }
+        public int RepsIncrementFrequencyId { get; set; }
+        public int WeightIncrementFrequencyId { get; set; }
+        public int SetDurationIncrementFrequencyId { get; set; }
+        public int RepsIncrementAmount { get; set; }
+        public int WeightIncrementAmount { get; set; }
+        public int SetDurationIncrementAmount { get; set; }
     }
 }
 
