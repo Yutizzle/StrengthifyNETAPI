@@ -143,8 +143,6 @@ namespace StrengthifyNETAPI.Tests
 
             var payload = new StringContent(JsonSerializer.Serialize(updateProgram, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }), Encoding.UTF8, "application/json");
 
-            Console.WriteLine(await payload.ReadAsStringAsync());
-
             // Act
             var response = await _httpClient.PutAsync("/api/Programs", payload);
             var responseContent = await response.Content.ReadAsStreamAsync();

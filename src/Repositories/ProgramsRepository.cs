@@ -241,7 +241,6 @@ namespace StrengthifyNETAPI.Repositories
                 .ToList();
 
             // get workout exercises to delete
-            Console.WriteLine(workouts);
             List<WorkoutExercise> exercisesDelete = await _context.WorkoutExercises.ToListAsync();
             exercisesDelete = exercisesDelete
                 .Where(x => workouts.FirstOrDefault(y => y.WorkoutId == x.WorkoutId) != null &&
