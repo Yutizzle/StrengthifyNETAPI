@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StrengthifyNETAPI.Models
 {
-    [Index(nameof(WorkoutName), IsUnique = true)]
+    [Index(nameof(WorkoutId), IsUnique = true)]
     public class Workout : BaseEntity
     {
-        public int WorkoutId { get; init; }
-        public Guid? ImageObjectId { get; init; }
-        public string WorkoutName { get; init; }
-        public ICollection<WorkoutExercise> WorkoutExercises { get; init; }
+        public int WorkoutId { get; set; }
+        public Guid? ImageObjectId { get; set; }
+        public string WorkoutName { get; set; }
+        public ICollection<WorkoutExercise> WorkoutExercises { get; set; }
     }
 }

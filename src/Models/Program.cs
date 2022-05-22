@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StrengthifyNETAPI.Models
 {
-    [Index(nameof(ProgramName), IsUnique = true)]
+    [Index(nameof(ProgramId), nameof(ProgramName), IsUnique = true)]
     public class Program : BaseEntity
     {
-        public int ProgramId { get; init; }
-        public string ProgramName { get; init; }
-        public int TotalCycleDays { get; init; }
+        public int ProgramId { get; set; }
+        public string ProgramName { get; set; }
+        public int TotalCycleDays { get; set; }
 
-        public ICollection<ProgramDetail> ProgramDetails { get; init; }
+        public ICollection<ProgramDetail> ProgramDetails { get; set; }
     }
 }

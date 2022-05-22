@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StrengthifyNETAPI.Models
 {
-    [Index(nameof(WorkoutExerciseId), nameof(Set), IsUnique = true)]
+    [Index(nameof(WorkoutExerciseDetailId), nameof(WorkoutExerciseId), nameof(Set), IsUnique = true)]
     public class WorkoutExerciseDetail : BaseEntity
     {
         public int WorkoutExerciseDetailId { get; set; }

@@ -12,11 +12,12 @@ namespace StrengthifyNETAPI.Repositories
     {
         Task<IEnumerable<ProgramReadLiteDto>> GetAllProgramsAsync();
         Task<ProgramReadLiteDto> GetProgramByIdAsync(int id);
+        Task<Program> GetProgramEntityByIdAsync(int id);
         Task<Program> GetProgramByNameAsync(string name);
         Task<ProgramReadFullDto> GetFullProgramByIdAsync(int id);
-        Task<ActionResult<int>> PutProgramAsync(int id, Program program);
+        Task<int> PutProgramAsync(ProgramUpdateDto newProgram, User user);
         Task<int> CreateProgramAsync(ProgramWriteDto newProgram, User user);
-        void DeleteProgramAsync(int id);
+        Task<int> DeleteProgramAsync(int id);
         bool ProgramExists(int id);
     }
 }
